@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors from your new palette */
+  --color-brand-primary: #3F4C1B;   /* Deep Forest Green */
+  --color-brand-accent: #7BA204;    /* Vibrant Lime Green */
+  --color-app-bg: #F6EDD9;          /* Soft Cream/Sand */
+  --color-brand-muted: #9999CC;     /* Muted Lavender */
+  
+  /* Glassmorphism background */
+  --color-card-bg: rgba(255, 255, 255, 0.4);
+  
+  /* Typography Variables */
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-geist-sans);
+}
+
+@layer base {
+  body {
+    @apply bg-app-bg text-brand-primary font-body antialiased;
+  }
+}
