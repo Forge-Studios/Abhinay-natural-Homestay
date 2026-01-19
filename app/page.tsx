@@ -1,5 +1,4 @@
 import BaseCard from "@/components/base/BaseCard";
-import ResortHero from "@/components/ResortFooter";
 import { ArrowRight, Calendar, Users } from "lucide-react";
 import Image from "next/image";
 
@@ -119,9 +118,9 @@ export default function HomePage() {
         </div>
       </section>
       {/* 4. RESORT HERO SECTION */}
-      <section className="w-full px-6 py-20">
+      {/* <section className="w-full px-6 py-20">
         <ResortHero />
-      </section>
+      </section> */}
     </main>
   );
 }
