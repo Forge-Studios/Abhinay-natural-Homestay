@@ -2,14 +2,14 @@
 
 @theme {
   /* Colors from your new palette */
-  --color-brand-primary: #3F4C1B;   /* Deep Forest Green */
-  --color-brand-accent: #7BA204;    /* Vibrant Lime Green */
-  --color-app-bg: #F6EDD9;          /* Soft Cream/Sand */
-  --color-brand-muted: #9999CC;     /* Muted Lavender */
-  
+  --color-brand-primary: #3f4c1b; /* Deep Forest Green */
+  --color-brand-accent: #7ba204; /* Vibrant Lime Green */
+  --color-app-bg: #f6edd9; /* Soft Cream/Sand */
+  --color-brand-muted: #9999cc; /* Muted Lavender */
+
   /* Glassmorphism background */
   --color-card-bg: rgba(255, 255, 255, 0.4);
-  
+
   /* Typography Variables */
   --font-display: var(--font-playfair);
   --font-body: var(--font-geist-sans);
