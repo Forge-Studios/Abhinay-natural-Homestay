@@ -1,22 +1,67 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors from your new palette */
-  --color-brand-primary: #3f4c1b; /* Deep Forest Green */
-  --color-brand-accent: #7ba204; /* Vibrant Lime Green */
-  --color-app-bg: #f6edd9; /* Soft Cream/Sand */
-  --color-brand-muted: #9999cc; /* Muted Lavender */
+  /* --- Colors from your palette --- */
+  --color-brand-primary: #3f4c1b;
+  --color-brand-accent: #7ba204;
+  --color-app-bg: #f6edd9;
+  --color-brand-muted: #9999cc;
+  --color-brand-secondary: #5c6d32;
+  /* Added for subtle depth */
 
-  /* Glassmorphism background */
+  /* --- Glassmorphism --- */
   --color-card-bg: rgba(255, 255, 255, 0.4);
+  --color-glass-border: rgba(255, 255, 255, 0.3);
 
-  /* Typography Variables */
+  /* --- Typography Variables --- */
   --font-display: var(--font-playfair);
   --font-body: var(--font-geist-sans);
+
+  /* --- Fluidic Animation Engine --- */
+  --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Link the animation to a class name */
+  --animate-page-reveal: page-reveal 0.9s var(--ease-fluid) forwards;
+
+  @keyframes page-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+      filter: blur(10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
 }
 
 @layer base {
+
+  *,
+  ::after,
+  ::before {
+    @apply border-brand-primary/10;
+  }
+
+  html {
+    /* Prevents the 'jumping' effect when moving between pages */
+    scrollbar-gutter: stable;
+    @apply scroll-smooth selection:bg-brand-accent/30 selection:text-brand-primary;
+  }
+
   body {
-    @apply bg-app-bg text-brand-primary font-body antialiased;
+    @apply bg-app-bg text-brand-primary font-body antialiased transition-colors duration-500;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer utilities {
+
+  /* Reusable class name for the animation*/
+  .animate-page-reveal {
+    animation: var(--animate-page-reveal);
   }
 }
