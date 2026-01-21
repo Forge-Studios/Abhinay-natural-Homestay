@@ -94,9 +94,6 @@ export default function HomePage() {
           <div className="aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-2xl border-8 border-white">
             <Image src="https://images.unsplash.com/photo-1510798831971-661eb04b3739" alt="Our Forest Story" fill className="object-cover" />
           </div>
-          <div className="absolute -bottom-12 -right-12 w-56 h-56 bg-brand-primary rounded-full p-10 flex items-center justify-center text-center shadow-2xl rotate-12">
-            <p className="text-white text-sm font-bold tracking-widest leading-relaxed uppercase">Awarded Best Eco-Stay 2026</p>
-          </div>
         </div>
         <div>
           <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs">Since 2020</span>
