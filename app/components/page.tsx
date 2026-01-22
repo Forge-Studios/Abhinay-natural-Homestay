@@ -5,6 +5,7 @@ import BaseCard from "@/components/base/BaseCard";
 import Button from "@/components/base/Button";
 import Form from "@/components/base/Form";
 import Calendar from "@/components/Calendar";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { useState } from "react";
 
 export default function ComponentsPage() {
@@ -164,6 +165,9 @@ export default function ComponentsPage() {
             </div>
           )}
         </div>
+      </div>
+      <div className="max-w-[95vw] 2xl:max-w-400 mx-auto px-6 ">
+        <WhatsAppButton phoneNumber="916296344129" message="Hi, I have some queries" />
       </div>
     </main>
   );
