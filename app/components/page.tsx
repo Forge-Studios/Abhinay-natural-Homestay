@@ -5,6 +5,7 @@ import BaseCard from "@/components/base/BaseCard";
 import Button from "@/components/base/Button";
 import Form from "@/components/base/Form";
 import Calendar from "@/components/Calendar";
+import ImageCarousel from "@/components/ImageCarousel";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { useState } from "react";
 
@@ -24,6 +25,38 @@ export default function ComponentsPage() {
    * 2. text-brand-primary: Ensures typing is visible on beige glass.
    * 3. Label starts at left-5/top-5 and floats to left-5/top-2.
    */
+
+  const carouselImages = [
+    {
+      id: "1",
+      src: "https://images.unsplash.com/photo-1631049307038-da0ec9d70304?w=1200&q=80",
+      alt: "Luxury hotel room",
+      title: "Luxury Suites",
+      description: "Experience comfort and elegance in our premium rooms",
+    },
+    {
+      id: "2",
+      src: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&q=80",
+      alt: "Hotel pool area",
+      title: "Relaxation Zone",
+      description: "Unwind by our sparkling swimming pool and gardens",
+    },
+    {
+      id: "3",
+      src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      alt: "Restaurant dining",
+      title: "Fine Dining",
+      description: "Savor exquisite cuisine prepared by our expert chefs",
+    },
+    {
+      id: "4",
+      src: "https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=1200&q=80",
+      alt: "Hotel fitness center",
+      title: "Wellness Center",
+      description: "Stay fit with our state-of-the-art facilities",
+    },
+  ];
+
   const inputStyles = `
     peer w-full px-5 py-4 pt-7
     bg-white/20 border border-brand-primary/10
@@ -167,8 +200,21 @@ export default function ComponentsPage() {
         </div>
       </div>
       <div className="max-w-[95vw] 2xl:max-w-400 mx-auto px-6 ">
-        <WhatsAppButton phoneNumber="916296344129" message="Hi, I have some queries" />
+        <WhatsAppButton phoneNumber="916296344129" />
       </div>
+      <section className="py-8 md:py-12 lg:py-16 px-4 md:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: "#3F4C1B" }}>
+              Experience Luxury
+            </h1>
+            <p style={{ color: "#7BA204" }} className="text-lg">
+              Explore our world-class facilities and accommodations
+            </p>
+          </div>
+          <ImageCarousel images={carouselImages} autoPlay={true} autoPlayInterval={6000} />
+        </div>
+      </section>
     </main>
   );
 }
