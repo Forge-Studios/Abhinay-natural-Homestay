@@ -6,7 +6,6 @@ import Button from "@/components/base/Button";
 import CTA from "@/components/base/CTA";
 import Form from "@/components/base/Form";
 import Modal from "@/components/base/Modal";
-import Calendar from "@/components/Calendar";
 import ImageCarousel from "@/components/ImageCarousel";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { useState } from "react";
@@ -88,7 +87,7 @@ export default function ComponentsPage() {
           trigger={<Button className="mt-6" text="Click to Open Modal" type="button" onPress={() => {}} />}
           title="Example Modal"
           size="lg"
-          closeOnBackdropClick={false} 
+          closeOnBackdropClick={false}
           footer={({ close }) => (
             <>
               <button onClick={close} className="text-brand-primary/60 hover:text-brand-primary">
@@ -125,7 +124,7 @@ export default function ComponentsPage() {
             description="Labels float to the top-left on focus or when typing."
             submitLabel="Send Message"
             rounded="3xl"
-            onSubmit={(e: any) => {
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
               e.preventDefault();
               console.log("Form Data:", Object.fromEntries(new FormData(e.currentTarget)));
               alert("Form submitted! Check console.");
@@ -210,9 +209,9 @@ export default function ComponentsPage() {
             </p>
           </div>
 
-          <div className="flex justify-center">
+          {/* <div className="flex justify-center">
             <Calendar onRangeChange={handleRangeChange} />
-          </div>
+          </div> */}
 
           {dateRange.start && (
             <div
