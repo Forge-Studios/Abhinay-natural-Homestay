@@ -5,6 +5,7 @@ import BaseCard from "@/components/base/BaseCard";
 import Button from "@/components/base/Button";
 import CTA from "@/components/base/CTA";
 import Form from "@/components/base/Form";
+import Modal from "@/components/base/Modal";
 import Calendar from "@/components/Calendar";
 import ImageCarousel from "@/components/ImageCarousel";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -80,8 +81,37 @@ export default function ComponentsPage() {
       <div className="max-w-[95vw] 2xl:max-w-400 mx-auto px-6">
         <h1>Components Page</h1>
 
-        {/* Existing Components - UNTOUCHED */}
         <Button text="Visit Us" type="link" href="test.com" />
+
+        {/* THE MODAL USAGE */}
+        <Modal
+          trigger={<Button className="mt-6" text="Click to Open Modal" type="button" onPress={() => {}} />}
+          title="Example Modal"
+          size="lg"
+          closeOnBackdropClick={false} 
+          footer={({ close }) => (
+            <>
+              <button onClick={close} className="text-brand-primary/60 hover:text-brand-primary">
+                Cancel
+              </button>
+              <Button
+                text="Confirm Booking"
+                type="button"
+                onPress={() => {
+                  alert("Saved!");
+                  close(); // Close modal after action
+                }}
+              />
+            </>
+          )}
+        >
+          {({ close }) => (
+            <div className="space-y-4">
+              <p>Please fill out your details below.</p>
+              {/* Your components here */}
+            </div>
+          )}
+        </Modal>
 
         <BaseCard className="p-6 mt-6">
           <h2 className="text-2xl font-semibold mb-4 text-brand-primary">Base Card Component</h2>
