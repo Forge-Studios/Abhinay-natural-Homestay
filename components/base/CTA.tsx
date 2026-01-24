@@ -7,9 +7,10 @@ interface CTAProps {
   rowReverse?: boolean; //default false
   imgSrc?: string; //default image src
   showImage?: boolean; //default true
+  href?: string; //link href
 }
 
-export default function CTA({ className, rowReverse, imgSrc, showImage = true }: CTAProps) {
+export default function CTA({ className, rowReverse, imgSrc, showImage = true, href }: CTAProps) {
   return (
     <BaseCard intensity="2xl" rounded="3xl" className={`${className} group p-8 flex ${rowReverse ? "flex-row-reverse" : ""} items-center gap-8`}>
       {showImage && (
@@ -21,10 +22,12 @@ export default function CTA({ className, rowReverse, imgSrc, showImage = true }:
         <h3 className="text-brand-primary text-xl font-bold tracking-wide">Escape Awaits</h3>
         <p className="text-brand-primary/60 text-sm mt-2 font-medium">Find peace in grand style amid nature&apos;s embrace.</p>
         <button className="mt-5 flex items-center gap-3 text-brand-primary font-bold group/btn">
-          <span className="text-xs tracking-[0.2em] uppercase">EXPLORE</span>
-          <div className="w-10 h-10 rounded-full border-2 border-brand-accent/20 flex items-center justify-center group-hover:bg-brand-accent group-hover:text-white transition-all">
-            <ArrowRight size={18} />
-          </div>
+          <a href={href ? href : "#"} className="flex items-center gap-3 text-brand-primary font-bold group/btn">
+            <span className="text-xs tracking-[0.2em] uppercase">EXPLORE</span>
+            <div className="w-10 h-10 rounded-full border-2 border-brand-accent/20 flex items-center justify-center group-hover:bg-brand-accent group-hover:text-white transition-all">
+              <ArrowRight size={18} />
+            </div>
+          </a>
         </button>
       </div>
     </BaseCard>
