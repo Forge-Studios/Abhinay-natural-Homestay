@@ -3,6 +3,7 @@ import Accordion from "@/components/Accordion";
 
 import BaseCard from "@/components/base/BaseCard";
 import Button from "@/components/base/Button";
+import CTA from "@/components/base/CTA";
 import Form from "@/components/base/Form";
 import Calendar from "@/components/Calendar";
 import ImageCarousel from "@/components/ImageCarousel";
@@ -214,6 +215,9 @@ export default function ComponentsPage() {
           </div>
           <ImageCarousel images={carouselImages} autoPlay={true} autoPlayInterval={6000} />
         </div>
+      </section>
+      <section className="px-6 max-w-350">
+        <CTA />
       </section>
     </main>
   );
