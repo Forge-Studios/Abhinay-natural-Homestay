@@ -1,13 +1,16 @@
 "use client";
 import Accordion from "@/components/Accordion";
-
 import BaseCard from "@/components/base/BaseCard";
 import Button from "@/components/base/Button";
 import CTA from "@/components/base/CTA";
 import Form from "@/components/base/Form";
 import Modal from "@/components/base/Modal";
+import Calendar from "@/components/Calendar";
+import IconTextCard from "@/components/IconTextCard";
 import ImageCarousel from "@/components/ImageCarousel";
+import TextCard from "@/components/TextCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { Coffee, Wifi } from "lucide-react";
 import { useState } from "react";
 
 export default function ComponentsPage() {
@@ -55,6 +58,19 @@ export default function ComponentsPage() {
       alt: "Hotel fitness center",
       title: "Wellness Center",
       description: "Stay fit with our state-of-the-art facilities",
+    },
+  ];
+
+  const amenities = [
+    {
+      icon: <Wifi size={24} />,
+      title: "Icon Text Card Example 1",
+      description: "Stay connected with high-speed fiber internet throughout the property.",
+    },
+    {
+      icon: <Coffee size={24} />,
+      title: "Icon Text Card Example 2",
+      description: "Organic local beans brewed fresh every morning for our guests.",
     },
   ];
 
@@ -116,6 +132,32 @@ export default function ComponentsPage() {
           <h2 className="text-2xl font-semibold mb-4 text-brand-primary">Base Card Component</h2>
           <p>This is an example of the BaseCard component with default props.</p>
         </BaseCard>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 max-w-7xl mt-6">
+          {amenities.map((item, index) => (
+            <IconTextCard key={index} icon={item.icon} title={item.title} description={item.description} intensity="lg" />
+          ))}
+        </div>
+
+        <TextCard
+          className="mt-6 w-[20%]"
+          subtitle="Heritage"
+          title="Simple Text Card Example"
+          description="Our homestay was founded on the principles of sustainability and traditional hospitality, passed down through three generations."
+          intensity="lg"
+        />
+
+        <TextCard
+          className="mt-6 w-[20%]"
+          title="Detailed Text Card Example"
+          description="Discover the hidden gems of the valley that only locals know about..."
+          footer={
+            <>
+              <span>Jan 24, 2026</span>
+              <button className="text-brand-accent font-semibold hover:underline">Read Story</button>
+            </>
+          }
+        />
 
         {/* The Form Component with Left-Floating Labels */}
         <div className="mt-12 max-w-2xl">
