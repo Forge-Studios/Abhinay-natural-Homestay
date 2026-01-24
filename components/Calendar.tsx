@@ -3,21 +3,17 @@
 import { useState } from "react";
 
 type CalendarProps = {
-  year?: number;
-  month?: number; // 0–11
-  onRangeChange?: (start: Date | null, end: Date | null) => void;
+  startDate: Date | null;
+  endDate: Date | null;
+  onRangeChange: (start: Date | null, end: Date | null) => void;
 };
 
-export default function Calendar({ year, month, onRangeChange }: CalendarProps) {
+export default function Calendar({ startDate, endDate, onRangeChange }: CalendarProps) {
   const today = new Date();
-  today.setHours(0, 0, 0, 0); // normalize
+  today.setHours(0, 0, 0, 0);
 
-  const [currentYear, setCurrentYear] = useState(year ?? today.getFullYear());
-  const [currentMonth, setCurrentMonth] = useState(month ?? today.getMonth());
-
-  // ✅ Default start date = today
-  const [startDate, setStartDate] = useState<Date | null>(today);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [currentYear, setCurrentYear] = useState(today.getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(today.getMonth());
 
   const firstDay = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -33,7 +29,7 @@ export default function Calendar({ year, month, onRangeChange }: CalendarProps) 
   const isPastDate = (date: Date) => date < today;
 
   const isSameDay = (a: Date | null, b: Date) =>
-    a && a.getDate() === b.getDate() && a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
+    !!a && a.getDate() === b.getDate() && a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
 
   const isInRange = (day: number) => {
     if (!startDate || !endDate) return false;
@@ -43,32 +39,27 @@ export default function Calendar({ year, month, onRangeChange }: CalendarProps) 
 
   const selectDate = (day: number) => {
     const date = getDate(day);
-
-    // ❌ Block past dates
     if (isPastDate(date)) return;
 
-    // First click → end date
-    if (startDate && !endDate) {
-      if (date < startDate) {
-        setStartDate(date);
-        setEndDate(null);
-        onRangeChange?.(date, null);
-        return;
-      }
-
-      setEndDate(date);
-      onRangeChange?.(startDate, date);
+    if (!startDate) {
+      onRangeChange(date, null);
       return;
     }
 
-    // Reset range
-    setStartDate(date);
-    setEndDate(null);
-    onRangeChange?.(date, null);
+    if (startDate && !endDate) {
+      if (date < startDate) {
+        onRangeChange(date, null);
+      } else {
+        onRangeChange(startDate, date);
+      }
+      return;
+    }
+
+    onRangeChange(date, null);
   };
 
   const prevMonth = () => {
-    if (currentYear === today.getFullYear() && currentMonth === today.getMonth()) return; // ❌ block navigating to past months
+    if (currentYear === today.getFullYear() && currentMonth === today.getMonth()) return;
 
     if (currentMonth === 0) {
       setCurrentMonth(11);

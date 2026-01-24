@@ -5,7 +5,6 @@ import BaseCard from "@/components/base/BaseCard";
 import Button from "@/components/base/Button";
 import CTA from "@/components/base/CTA";
 import Form from "@/components/base/Form";
-import Calendar from "@/components/Calendar";
 import ImageCarousel from "@/components/ImageCarousel";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { useState } from "react";
@@ -95,7 +94,7 @@ export default function ComponentsPage() {
             description="Labels float to the top-left on focus or when typing."
             submitLabel="Send Message"
             rounded="3xl"
-            onSubmit={(e: any) => {
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
               e.preventDefault();
               console.log("Form Data:", Object.fromEntries(new FormData(e.currentTarget)));
               alert("Form submitted! Check console.");
@@ -180,9 +179,9 @@ export default function ComponentsPage() {
             </p>
           </div>
 
-          <div className="flex justify-center">
+          {/* <div className="flex justify-center">
             <Calendar onRangeChange={handleRangeChange} />
-          </div>
+          </div> */}
 
           {dateRange.start && (
             <div
