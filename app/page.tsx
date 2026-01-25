@@ -1,5 +1,6 @@
 import BaseCard from "@/components/base/BaseCard";
 import CTA from "@/components/base/CTA";
+import Dropdown from "@/components/Dropdown";
 import { Calendar, Users } from "lucide-react";
 import Image from "next/image";
 
@@ -59,10 +60,7 @@ export default function HomePage() {
             <label className="text-[10px] font-bold uppercase text-brand-primary/40 tracking-widest flex items-center gap-2">
               <Users size={14} /> Guests
             </label>
-            <select className="bg-transparent text-sm font-bold outline-none text-brand-primary cursor-pointer">
-              <option>2 Adults, 1 Room</option>
-              <option>4 Adults, 2 Rooms</option>
-            </select>
+            <Dropdown options={["2 Adults, 1 Rooms", "4 Adults, 2 Rooms"]} />
           </div>
           {/* Accent Button using Lime Green */}
           <button className="w-full bg-brand-accent text-white py-5 rounded-[1.5rem] font-bold tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-brand-accent/20">
