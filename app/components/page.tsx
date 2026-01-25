@@ -5,7 +5,7 @@ import Button from "@/components/base/Button";
 import CTA from "@/components/base/CTA";
 import Form from "@/components/base/Form";
 import Modal from "@/components/base/Modal";
-import Calendar from "@/components/Calendar";
+import Dropdown from "@/components/Dropdown";
 import IconTextCard from "@/components/IconTextCard";
 import ImageCarousel from "@/components/ImageCarousel";
 import TextCard from "@/components/TextCard";
@@ -289,6 +289,10 @@ export default function ComponentsPage() {
       </section>
       <section className="px-6 max-w-350">
         <CTA />
+      </section>
+
+      <section className="px-6 max-w-350">
+        <Dropdown options={["user1", "user2", "user3"]} onChange={(item) => console.log(item)} />
       </section>
     </main>
   );
