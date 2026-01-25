@@ -5,6 +5,7 @@ import Button from "@/components/base/Button";
 import CTA from "@/components/base/CTA";
 import Form from "@/components/base/Form";
 import Modal from "@/components/base/Modal";
+import Section from "@/components/base/Section";
 import Dropdown from "@/components/Dropdown";
 import IconTextCard from "@/components/IconTextCard";
 import ImageCarousel from "@/components/ImageCarousel";
@@ -316,6 +317,21 @@ export default function ComponentsPage() {
       <section className="px-6 max-w-350">
         <Dropdown options={["user1", "user2", "user3"]} onChange={(item) => console.log(item)} />
       </section>
+
+      <Section className="bg-brand-muted" fullWidth={true}>
+        <h2 className="text-3xl font-bold mb-4">Section Component Example with Full Width</h2>
+        <p className="text-lg text-brand-secondary">
+          This is an example of the Section component which provides consistent padding and max-width for content areas.
+        </p>
+        <ImageCarousel images={carouselImages} autoPlay={false} />
+      </Section>
+      <Section className="bg-brand-secondary" fullWidth={false}>
+        <h2 className="text-3xl font-bold mb-4 text-white">Section Component Example without Full Width</h2>
+        <p className="text-lg text-brand-secondary">
+          This is an example of the Section component which provides consistent padding and max-width for content areas.
+        </p>
+        <ImageCarousel images={carouselImages} autoPlay={false} />
+      </Section>
     </main>
   );
 }
