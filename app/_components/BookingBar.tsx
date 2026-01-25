@@ -3,12 +3,29 @@
 import BaseCard from "@/components/base/BaseCard";
 import Calendar from "@/components/Calendar";
 import { Calendar as CalendarIcon, Users } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function BookingBar() {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
-  const [open, setOpen] = useState<"arrival" | "departure" | null>(null);
+  const [open, setOpen] = useState<boolean | "arrival" | "departure">(false);
+  const calendarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   return (
     <section className="px-6 md:px-12 -mt-20 relative z-20">
@@ -51,7 +68,7 @@ export default function BookingBar() {
 
         {/* Calendar Popup */}
         {open && (
-          <div className="absolute left-0 top-full mt-6 z-50">
+          <div ref={calendarRef} className="absolute left-0 top-full mt-6 z-50">
             <Calendar
               startDate={startDate}
               endDate={endDate}
@@ -60,7 +77,7 @@ export default function BookingBar() {
                 setEndDate(end);
 
                 // auto-close when range complete
-                if (start && end) setOpen(null);
+                if (start && end) setOpen(false);
               }}
             />
           </div>
