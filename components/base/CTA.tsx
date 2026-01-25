@@ -12,7 +12,11 @@ interface CTAProps {
 
 export default function CTA({ className, rowReverse, imgSrc, showImage = true, href }: CTAProps) {
   return (
-    <BaseCard intensity="2xl" rounded="3xl" className={`${className} group p-8 flex ${rowReverse ? "flex-row-reverse" : ""} items-center gap-8`}>
+    <BaseCard
+      intensity="2xl"
+      rounded="3xl"
+      className={`${className} group p-8 flex md:flex-row flex-col ${rowReverse ? "flex-row-reverse" : ""} items-center gap-8`}
+    >
       {showImage && (
         <div className="relative w-28 h-28 rounded-3xl overflow-hidden shrink-0 shadow-lg border border-white/10">
           <Image src={imgSrc || "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e"} alt="Mini Preview" fill className="object-cover" />
