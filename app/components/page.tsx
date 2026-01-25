@@ -26,21 +26,25 @@ export default function ComponentsPage() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const data = Object.fromEntries(new FormData(e.currentTarget));
+    const form = e.currentTarget; // ✅ store reference early
+    const data = Object.fromEntries(new FormData(form));
 
     try {
-      console.log("im here");
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Failed");
+      }
 
       alert("Message sent successfully 🚀");
-      e.currentTarget.reset();
-    } catch {
+      form.reset(); // ✅ safe now
+    } catch (err) {
+      console.error(err);
       alert("Something went wrong. Try again.");
     }
   };
