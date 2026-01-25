@@ -11,7 +11,7 @@ import ImageCarousel from "@/components/ImageCarousel";
 import TextCard from "@/components/TextCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Coffee, Wifi } from "lucide-react";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function ComponentsPage() {
   const [dateRange, setDateRange] = useState<{ start: Date | null; end: Date | null }>({
@@ -21,6 +21,28 @@ export default function ComponentsPage() {
 
   const handleRangeChange = (start: Date | null, end: Date | null) => {
     setDateRange({ start, end });
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(e.currentTarget));
+
+    try {
+      console.log("im here");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      alert("Message sent successfully 🚀");
+      e.currentTarget.reset();
+    } catch {
+      alert("Something went wrong. Try again.");
+    }
   };
 
   /**
@@ -166,11 +188,7 @@ export default function ComponentsPage() {
             description="Labels float to the top-left on focus or when typing."
             submitLabel="Send Message"
             rounded="3xl"
-            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-              e.preventDefault();
-              console.log("Form Data:", Object.fromEntries(new FormData(e.currentTarget)));
-              alert("Form submitted! Check console.");
-            }}
+            onSubmit={handleSubmit}
           >
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

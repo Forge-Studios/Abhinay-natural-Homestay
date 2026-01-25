@@ -4,11 +4,26 @@ import { FormEvent } from "react";
 import Form from "./base/Form";
 
 export default function ContactForm() {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const data = Object.fromEntries(new FormData(e.currentTarget));
-    console.log("Contact Submission:", data);
-    alert("Message Received!");
+
+    try {
+      console.log("im here");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      alert("Message sent successfully 🚀");
+      e.currentTarget.reset();
+    } catch {
+      alert("Something went wrong. Try again.");
+    }
   };
 
   /**
@@ -19,8 +34,8 @@ export default function ContactForm() {
    */
   const fieldStyles = `
     peer w-full px-5 py-4 pt-7
-    bg-white/20 border border-brand-primary/10 
-    rounded-2xl text-brand-primary outline-none 
+    bg-white/20 border border-brand-primary/10
+    rounded-2xl text-brand-primary outline-none
     placeholder-transparent
     focus:border-brand-primary/30 focus:bg-white/40
     transition-all duration-300
