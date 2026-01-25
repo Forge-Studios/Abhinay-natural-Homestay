@@ -29,7 +29,7 @@ export default function HomePage() {
             </div>
 
             {/* HERO OVERLAY: High Intensity Glass */}
-            <CTA className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-20 md:right-auto md:w-125" />
+            <CTA className="absolute bottom-8 hidden lg:flex left-8 right-8 md:bottom-12 md:left-20 md:right-auto md:w-125" />
           </div>
         </div>
       </section>

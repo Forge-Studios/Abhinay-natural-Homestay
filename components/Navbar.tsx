@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: "HOME", href: "/", icon: Home },
     { name: "ABOUT", href: "/about", icon: Info },
     { name: "ROOMS", href: "/rooms", icon: Bed },
-    { name: "FAQ", href: "/faq", icon: HelpCircle },
+    { name: "GALLERY", href: "/gallery", icon: HelpCircle },
     { name: "CONTACT US", href: "/contact", icon: Mail },
   ];
 
