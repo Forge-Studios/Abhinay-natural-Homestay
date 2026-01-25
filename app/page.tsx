@@ -1,8 +1,6 @@
-import BaseCard from "@/components/base/BaseCard";
 import CTA from "@/components/base/CTA";
-import Dropdown from "@/components/Dropdown";
-import { Calendar, Users } from "lucide-react";
 import Image from "next/image";
+import BookingBar from "./_components/BookingBar";
 
 export default function HomePage() {
   return (
@@ -37,37 +35,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. BOOKING BAR: Functional Glass */}
-      <section className="px-6 md:px-12 -mt-20 relative z-20">
-        <BaseCard
-          intensity="md"
-          hover={false}
-          borderOpacity={10}
-          className="max-w-300 mx-auto p-6 md:p-10 grid grid-cols-1 md:grid-cols-4 gap-8 items-center"
-        >
-          <div className="flex flex-col gap-2 md:border-r border-brand-primary/10 pr-4">
-            <label className="text-[10px] font-bold uppercase text-brand-primary/40 tracking-widest flex items-center gap-2">
-              <Calendar size={14} /> Arrival
-            </label>
-            <input type="date" className="bg-transparent text-sm font-bold outline-none text-brand-primary cursor-pointer" />
-          </div>
-          <div className="flex flex-col gap-2 md:border-r border-brand-primary/10 pr-4">
-            <label className="text-[10px] font-bold uppercase text-brand-primary/40 tracking-widest flex items-center gap-2">
-              <Calendar size={14} /> Departure
-            </label>
-            <input type="date" className="bg-transparent text-sm font-bold outline-none text-brand-primary cursor-pointer" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold uppercase text-brand-primary/40 tracking-widest flex items-center gap-2">
-              <Users size={14} /> Guests
-            </label>
-            <Dropdown options={["2 Adults, 1 Rooms", "4 Adults, 2 Rooms"]} />
-          </div>
-          {/* Accent Button using Lime Green */}
-          <button className="w-full bg-brand-accent text-white py-5 rounded-[1.5rem] font-bold tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-brand-accent/20">
-            CHECK AVAILABILITY
-          </button>
-        </BaseCard>
-      </section>
+      <BookingBar />
 
       {/* 3. THE EXPERIENCE (About Section) */}
       <section className="py-32 px-6 max-w-350 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -95,10 +63,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      {/* 4. RESORT HERO SECTION */}
-      {/* <section className="w-full px-6 py-20">
-        <ResortHero />
-      </section> */}
     </main>
   );
 }
