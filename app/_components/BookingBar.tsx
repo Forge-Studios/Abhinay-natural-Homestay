@@ -2,6 +2,7 @@
 
 import BaseCard from "@/components/base/BaseCard";
 import Calendar from "@/components/Calendar";
+import Dropdown from "@/components/Dropdown";
 import { Calendar as CalendarIcon, Users } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -56,10 +57,7 @@ export default function BookingBar() {
           <label className="text-[10px] font-bold uppercase text-brand-primary/40 tracking-widest flex items-center gap-2">
             <Users size={14} /> Guests
           </label>
-          <select className="bg-transparent text-sm font-bold outline-none text-brand-primary cursor-pointer">
-            <option>2 Adults, 1 Room</option>
-            <option>4 Adults, 2 Rooms</option>
-          </select>
+          <Dropdown options={["2 Adults, 1 Rooms", "4 Adults, 2 Rooms"]} />
         </div>
 
         <button className="w-full bg-brand-accent text-white py-5 rounded-[1.5rem] font-bold tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-brand-accent/20">
