@@ -336,8 +336,6 @@ export default function ComponentsPage() {
       </Section>
 
       <Section className="bg-brand-muted grid grid-cols-1 md:grid-cols-2 gap-8">
-        <ImageCard src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80" alt="Image 1" />
-
         <ImageInfoCard
           src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80"
           alt="Image 1"
@@ -347,7 +345,36 @@ export default function ComponentsPage() {
               <p className="text-sm">Experience our premium suite with stunning views and top-tier amenities.</p>
             </div>
           }
+          hasBtn={false}
+          btnText="Test"
+          btnType="link"
+          href="#"
         />
+        <ImageInfoCard
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80"
+          alt="Image 1"
+          content={
+            <div>
+              <h3 className="text-lg font-semibold">Luxury Accommodation</h3>
+              <p className="text-sm">Experience our premium suite with stunning views and top-tier amenities.</p>
+            </div>
+          }
+          hasBtn={true}
+          btnText="Test"
+          btnType="link"
+          href="#"
+        />
+        <ImageInfoCard
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80"
+          alt="Image 1"
+          content={<></>}
+          hasBtn={true}
+          btnText="Test"
+          btnType="link"
+          href="#"
+        />
+
+        <ImageCard src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80" alt="Image 1" />
       </Section>
     </main>
   );
