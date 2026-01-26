@@ -336,7 +336,7 @@ export default function ComponentsPage() {
       </Section>
 
       <Section className="bg-brand-muted grid grid-cols-1 md:grid-cols-2 gap-8">
-        <ImageCard src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80" alt="Image 1" height={720} width={620} />
+        <ImageCard src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80" alt="Image 1" />
 
         <ImageInfoCard
           src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80"
