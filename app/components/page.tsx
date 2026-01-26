@@ -8,7 +8,9 @@ import Modal from "@/components/base/Modal";
 import Section from "@/components/base/Section";
 import Dropdown from "@/components/Dropdown";
 import IconTextCard from "@/components/IconTextCard";
+import ImageCard from "@/components/ImageCard";
 import ImageCarousel from "@/components/ImageCarousel";
+import ImageInfoCard from "@/components/ImageInfoCard";
 import TextCard from "@/components/TextCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Coffee, Wifi } from "lucide-react";
@@ -331,6 +333,21 @@ export default function ComponentsPage() {
           This is an example of the Section component which provides consistent padding and max-width for content areas.
         </p>
         <ImageCarousel images={carouselImages} autoPlay={false} />
+      </Section>
+
+      <Section className="bg-brand-muted grid grid-cols-1 md:grid-cols-2 gap-8">
+        <ImageCard src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80" alt="Image 1" height={720} width={620} />
+
+        <ImageInfoCard
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80"
+          alt="Image 1"
+          content={
+            <div>
+              <h3 className="text-lg font-semibold">Luxury Accommodation</h3>
+              <p className="text-sm">Experience our premium suite with stunning views and top-tier amenities.</p>
+            </div>
+          }
+        />
       </Section>
     </main>
   );
