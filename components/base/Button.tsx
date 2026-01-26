@@ -72,25 +72,25 @@ export default function Button({
       <Component
         onClick={onPress && onPress}
         className={`
-        flex items-between gap-2 w-full  
-        
+        flex items-between gap-2 w-full
+
         ${hasArrow ? "justify-between" : "justify-center"}
-        
+
         ${sizeMap[size]}
 
         /* Base Glass Styles using brand card-bg */
-        ${blurMap[intensity]} 
+        ${blurMap[intensity]}
         bg-card-bg
-        
+
         /* Dynamic Border Opacity */
         border border-brand-accent ${borderOpacity}
-        
+
         /* Shape and Shadow */
         ${roundedMap[rounded]}
-        
+
         /* Hover Transitions */
         transition-all duration-500 hover:bg-brand-accent hover:text-white
-        
+
         ${type === "link" ? { href } : {}}
 
         ${className}`}
