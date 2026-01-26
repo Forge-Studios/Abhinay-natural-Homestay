@@ -3,27 +3,29 @@
 import { ReactNode } from "react";
 import BaseCard from "./base/BaseCard";
 
-interface TextCardProps {
+interface StatCardProps {
+  readonly stat: string | number;
   readonly title: string;
-  readonly subtitle?: string;
   readonly description?: string;
-  readonly children?: ReactNode; // For adding custom elements like tags or buttons
-  readonly footer?: ReactNode; // For metadata or "Read More" links
-  readonly intensity?: "none" | "sm" | "md" | "lg" | "xl" | "2xl";
+  readonly subtitle?: string;
+  readonly children?: ReactNode;
+  readonly footer?: ReactNode;
   readonly className?: string;
   readonly animate?: boolean;
+  readonly intensity?: "none" | "sm" | "md" | "lg" | "xl" | "2xl";
 }
 
-export default function TextCard({
+export default function StatCard({
+  stat,
   title,
-  subtitle,
   description,
+  subtitle,
   children,
   footer,
-  intensity = "xl",
   className = "",
   animate = true,
-}: Readonly<TextCardProps>) {
+  intensity = "xl",
+}: Readonly<StatCardProps>) {
   return (
     <BaseCard
       intensity={intensity}
@@ -38,11 +40,14 @@ export default function TextCard({
       {/* Subtitle / Eyebrow */}
       {subtitle && <span className="block text-xs uppercase tracking-[0.2em] text-brand-accent font-semibold mb-3">{subtitle}</span>}
 
+      {/* Large Stat Number */}
+      <div className="text-4xl md:text-6xl text-brand-primary mb-4">{stat}</div>
+
       {/* Main Title */}
-      <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-primary mb-4 leading-tight">{title}</h3>
+      <h3 className="text-lg md:text-xl font-display font-bold text-brand-primary mb-4 leading-tight">{title}</h3>
 
       {/* Description */}
-      {description && <p className="text-brand-primary/70 font-body leading-relaxed mb-6">{description}</p>}
+      {description && <p className="text-base md:text-lg font-body leading-relaxed mb-6">{description}</p>}
 
       {/* Custom Content Slot */}
       {children && <div className="flex-1">{children}</div>}
