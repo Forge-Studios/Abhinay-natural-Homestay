@@ -6,15 +6,19 @@ interface ImageInfoCardProps {
   src: string;
   alt: string;
   content: ReactNode;
-  textColor?: string; // Tailwind color class suffix (e.g., "white" for text-white)
-  bgColor?: string; // Tailwind color class suffix (e.g., "gray-800" for bg-gray-800)
+  textColor?: string; // e.g. "text-white"
+  bgColor?: string; // e.g. "bg-gray-800"
 }
 
-export default function ImageInfoCard({ src, alt, content, textColor, bgColor }: ImageInfoCardProps) {
+export default function ImageInfoCard({ src, alt, content, textColor = "text-white", bgColor }: ImageInfoCardProps) {
   return (
-    <BaseCard className={`w-max h-max p-4 bg-${bgColor}`}>
-      <Image src={src} alt={alt} height={100} width={500} className="rounded-4xl" />
-      <div className={`text-${textColor || "white"} p-4`}>{content}</div>
+    <BaseCard className={`p-4 ${bgColor} flex flex-col items-center gap-2 h-max`}>
+      {/* Responsive image wrapper */}
+      <div className="relative w-full aspect-5/3 rounded-4xl overflow-hidden">
+        <Image src={src} alt={alt} fill sizes="(max-width: 640px) 100vw, 500px" className="object-cover" />
+      </div>
+
+      <div className={`${textColor} p-4`}>{content}</div>
     </BaseCard>
   );
 }
