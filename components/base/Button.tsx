@@ -6,7 +6,7 @@ type BaseButtonProps = {
   rounded?: "none" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
   size?: "sm" | "md" | "lg";
   className?: string;
-  borderOpacity?: number;
+  borderOpacity?: string | number;
   text: string;
   hasArrow?: boolean;
 };
@@ -27,7 +27,7 @@ export default function Button({
   intensity = "none",
   rounded = "full",
   className = "",
-  borderOpacity = 0,
+  borderOpacity,
   size = "md",
   onPress,
   href,
@@ -65,11 +65,21 @@ export default function Button({
     button: "button",
   };
 
+  const borderOpacityMap: any = {
+    0: "border-transparent",
+    20: "border-brand-accent/20",
+    40: "border-brand-accent/40",
+    60: "border-brand-accent/60",
+    80: "border-brand-accent/80",
+    100: "border-brand-accent",
+  };
+
   const Component = typeMap[type] as ElementType;
 
   return (
     <>
       <Component
+        {...(type === "link" ? { href } : {})}
         onClick={onPress && onPress}
         className={`
         flex items-between gap-2 w-full
@@ -83,7 +93,7 @@ export default function Button({
         bg-card-bg
 
         /* Dynamic Border Opacity */
-        border border-brand-accent ${borderOpacity}
+        border ${borderOpacityMap[borderOpacity || 0]}
 
         /* Shape and Shadow */
         ${roundedMap[rounded]}
@@ -91,7 +101,7 @@ export default function Button({
         /* Hover Transitions */
         transition-all duration-500 hover:bg-brand-accent hover:text-white
 
-        ${type === "link" ? { href } : {}}
+        
 
         ${className}`}
       >
