@@ -12,6 +12,7 @@ interface TwoColSectionProps {
   /** Optional styling hooks */
   className?: string;
   gap?: string; // Tailwind gap classes, e.g. "gap-8"
+  id?: string;
 }
 
 export default function TwoColSection({
@@ -21,16 +22,18 @@ export default function TwoColSection({
   className = "",
   gap = "gap-8",
   bgColor = "bg-brand-muted",
+  id,
 }: TwoColSectionProps) {
   return (
     <div
       className={`
         grid grid-cols-1 lg:grid-cols-2
-        rounded-2xl
+        rounded-[3rem]
         ${bgColor}
         ${gap}
         ${className}
       `}
+      id={id}
     >
       {/* Column 1 */}
       <div className={reverse ? "lg:order-2" : "lg:order-1"}>{left}</div>
