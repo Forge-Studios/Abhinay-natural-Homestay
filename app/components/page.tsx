@@ -8,10 +8,12 @@ import Modal from "@/components/base/Modal";
 import Section from "@/components/base/Section";
 import Dropdown from "@/components/Dropdown";
 import IconTextCard from "@/components/IconTextCard";
+import ImageBgCard from "@/components/ImageBgCard";
 import ImageCard from "@/components/ImageCard";
 import ImageCarousel from "@/components/ImageCarousel";
 import ImageInfoCard from "@/components/ImageInfoCard";
 import TextCard from "@/components/TextCard";
+import TwoColSection from "@/components/TwoColSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Coffee, Wifi } from "lucide-react";
 import { FormEvent, useState } from "react";
@@ -375,6 +377,68 @@ export default function ComponentsPage() {
         />
 
         <ImageCard src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80" alt="Image 1" />
+      </Section>
+
+      <Section>
+        <ImageBgCard images={["https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80"]} className="h-225 w-full shadow-2xl">
+          {/* Location badge */}
+          <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-md rounded-xl px-4 py-2 text-white">
+            <p className="text-sm font-medium">📍 Bali</p>
+            <p className="text-xs opacity-80">Indonesia</p>
+          </div>
+
+          {/* Bottom glass card */}
+          <div className="absolute bottom-6 left-6 right-6 bg-white/15 backdrop-blur-sm rounded-2xl p-6 text-white flex gap-6">
+            <div className="w-28 h-20 bg-white/30 rounded-xl" />
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold">Ocean View Pool Suite</h3>
+              <p className="text-sm opacity-80">Awake to the sound of waves and bask in sunsets from your private deck.</p>
+            </div>
+          </div>
+        </ImageBgCard>
+      </Section>
+
+      <Section>
+        <TwoColSection
+          reverse={false}
+          className="items-stretch"
+          gap="gap-12"
+          bgColor="bg-brand-primary/20"
+          left={
+            <ImageBgCard
+              images={carouselImages.map((img) => img.src)}
+              className="h-125 w-full shadow-2xl rounded-tl-2xl rounded-bl-2xl rounded-r-none"
+            >
+              {/* Location badge */}
+              <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-md rounded-xl px-4 py-2 text-white">
+                <p className="text-sm font-medium">📍 Bali</p>
+                <p className="text-xs opacity-80">Indonesia</p>
+              </div>
+
+              {/* Arrows */}
+              <button className="absolute left-4 top-1/2 -translate-y-1/2 text-white">←</button>
+              <button className="absolute right-4 top-1/2 -translate-y-1/2 text-white">→</button>
+
+              {/* Bottom glass card */}
+              <div className="absolute bottom-6 left-6 right-6 bg-white/15 backdrop-blur-sm rounded-2xl p-6 text-white flex gap-6">
+                <div className="w-28 h-20 bg-white/30 rounded-xl" />
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold">Ocean View Pool Suite</h3>
+                  <p className="text-sm opacity-80">Awake to the sound of waves and bask in sunsets from your private deck.</p>
+                </div>
+              </div>
+            </ImageBgCard>
+          }
+          right={
+            <div className="flex flex-col justify-between p-6">
+              <h2 className="text-2xl font-semibold">Ocean View Pool Suite</h2>
+
+              <p className="text-gray-600">Wake up to panoramic views of the open ocean from your private sanctuary.</p>
+
+              {/* details + button */}
+            </div>
+          }
+        />
       </Section>
     </main>
   );
