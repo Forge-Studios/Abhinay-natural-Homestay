@@ -81,60 +81,73 @@ export default function Calendar({ startDate, endDate, onRangeChange }: Calendar
   const monthName = new Date(currentYear, currentMonth).toLocaleString("default", { month: "long" });
 
   return (
-    <div className="w-96 rounded-xl border-2 p-6 shadow-lg" style={{ backgroundColor: "#F6EDD9", borderColor: "#7BA204" }}>
+    <div
+      className="
+        w-full max-w-96 mx-auto p-4 sm:p-6 
+        backdrop-blur-3xl bg-white/10 
+        border-2 border-white/40 
+        rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl
+        transition-all duration-500
+      "
+      style={{ backgroundColor: "rgba(245, 245, 245, 0.7)" }}
+    >
       {/* Selected Range */}
-      <div className="mb-6 grid grid-cols-2 gap-3">
-        <div className="rounded-lg border-2 p-3 text-sm" style={{ borderColor: "#9999CC", backgroundColor: "rgba(123, 162, 4, 0.05)" }}>
+      <div className="mb-4 sm:mb-6 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+        <div className="rounded-lg border-2 p-2 sm:p-3 text-sm" style={{ borderColor: "#9999CC", backgroundColor: "rgba(123, 162, 4, 0.05)" }}>
           <p style={{ color: "#3F4C1B" }} className="text-xs font-semibold uppercase tracking-wider">
             Start Date
           </p>
-          <p className="font-semibold mt-2" style={{ color: "#7BA204" }}>
+          <p className="font-semibold mt-1 sm:mt-2 text-sm" style={{ color: "#7BA204" }}>
             {startDate?.toDateString() ?? "--"}
           </p>
         </div>
-        <div className="rounded-lg border-2 p-3 text-sm" style={{ borderColor: "#9999CC", backgroundColor: "rgba(123, 162, 4, 0.05)" }}>
+        <div className="rounded-lg border-2 p-2 sm:p-3 text-sm" style={{ borderColor: "#9999CC", backgroundColor: "rgba(123, 162, 4, 0.05)" }}>
           <p style={{ color: "#3F4C1B" }} className="text-xs font-semibold uppercase tracking-wider">
             End Date
           </p>
-          <p className="font-semibold mt-2" style={{ color: "#7BA204" }}>
+          <p className="font-semibold mt-1 sm:mt-2 text-sm" style={{ color: "#7BA204" }}>
             {endDate?.toDateString() ?? "--"}
           </p>
         </div>
       </div>
 
       {/* Header */}
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-3 sm:mb-5 flex items-center justify-between">
         <button
           onClick={prevMonth}
-          className="transition hover:opacity-70 disabled:opacity-40 px-3 py-2 rounded-lg font-bold text-lg"
+          className="transition hover:opacity-70 disabled:opacity-40 p-2 sm:px-3 sm:py-2 rounded-lg font-bold text-base sm:text-lg min-w-[44px] h-[44px] flex items-center justify-center"
           style={{ color: "#3F4C1B" }}
           disabled={currentYear === today.getFullYear() && currentMonth === today.getMonth()}
         >
           ◀
         </button>
 
-        <h2 className="font-bold text-xl" style={{ color: "#3F4C1B" }}>
+        <h2 className="font-bold text-lg sm:text-xl truncate" style={{ color: "#3F4C1B" }}>
           {monthName} {currentYear}
         </h2>
 
-        <button onClick={nextMonth} className="transition hover:opacity-70 px-3 py-2 rounded-lg font-bold text-lg" style={{ color: "#3F4C1B" }}>
+        <button
+          onClick={nextMonth}
+          className="transition hover:opacity-70 p-2 sm:px-3 sm:py-2 rounded-lg font-bold text-base sm:text-lg min-w-[44px] h-[44px] flex items-center justify-center"
+          style={{ color: "#3F4C1B" }}
+        >
           ▶
         </button>
       </div>
 
       {/* Weekdays */}
-      <div className="grid grid-cols-7 text-center text-sm font-semibold mb-2">
+      <div className="grid grid-cols-7 text-center text-xs sm:text-sm font-semibold mb-2 gap-1">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-          <div key={d} style={{ color: "#7BA204" }}>
+          <div key={d} className="py-1 sm:py-2" style={{ color: "#7BA204" }}>
             {d}
           </div>
         ))}
       </div>
 
       {/* Calendar */}
-      <div className="grid grid-cols-7 text-center gap-1">
+      <div className="grid grid-cols-7 text-center gap-1 sm:gap-1">
         {Array.from({ length: firstDay }).map((_, i) => (
-          <div key={i} />
+          <div key={i} className="h-8 sm:h-10" />
         ))}
 
         {days.map((day) => {
@@ -149,18 +162,20 @@ export default function Calendar({ startDate, endDate, onRangeChange }: Calendar
               key={day}
               disabled={disabled}
               onClick={() => selectDate(day)}
-              className={`flex h-10 w-10 items-center justify-center rounded-lg text-sm font-medium transition ${
-                disabled
-                  ? "cursor-not-allowed opacity-40"
-                  : isStart || isEnd
-                    ? "text-white font-bold shadow-md hover:shadow-lg transform hover:scale-105"
-                    : isInRange(day)
-                      ? "hover:opacity-90"
-                      : "hover:shadow-md"
-              }`}
+              className={`group flex h-10 sm:h-10 w-10 sm:w-10 items-center justify-center rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 m-0.5 sm:m-0.5
+    ${
+      disabled
+        ? "cursor-not-allowed opacity-40 bg-gray-300 hover:bg-gray-300"
+        : isStart || isEnd
+          ? "bg-[#7BA204] text-white font-bold shadow-md hover:shadow-lg hover:scale-105 active:scale-95"
+          : isInRange(day)
+            ? "bg-[#9999CC] hover:bg-[#8888BB]"
+            : "hover:bg-[#6A8E04] hover:text-white active:bg-[#5A7A04] hover:shadow-md"
+    }`}
               style={{
-                backgroundColor: disabled ? "#E0E0E0" : isStart || isEnd ? "#7BA204" : isInRange(day) ? "#9999CC" : "transparent",
                 color: disabled ? "#999999" : isStart || isEnd ? "white" : "#3F4C1B",
+                minHeight: "40px",
+                minWidth: "40px",
               }}
             >
               {day}
