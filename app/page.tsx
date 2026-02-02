@@ -6,23 +6,25 @@ export default function HomePage() {
   return (
     <main className="bg-app-bg min-h-screen font-body selection:bg-brand-accent/30">
       {/* HERO */}
+      {/* HERO */}
       <section className="pt-28 sm:pt-32 min-h-[90svh] flex items-end">
         <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6">
-          <div className="relative min-h-[80svh] rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl">
-            {/* Background Image */}
-            <Image
-              src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
-              alt="Natural Homestay Forest Edge"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 1600px"
-              className="object-cover"
-            />
+          {/* OUTER WRAPPER: No overflow-hidden here so dropdowns can show */}
+          <div className="relative min-h-[80svh]">
+            {/* BACKGROUND LAYER: This handles the rounding and clipping of the image */}
+            <div className="absolute inset-0 rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl">
+              <Image
+                src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
+                alt="Natural Homestay Forest Edge"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 1600px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/80 via-brand-primary/40 to-transparent" />
+            </div>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/80 via-brand-primary/40 to-transparent" />
-
-            {/* Content */}
+            {/* CONTENT LAYER */}
             <div className="relative z-10 px-6 sm:px-12 pt-12 sm:pt-20 max-w-4xl text-white">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold leading-[1.05]">Natural Retreat on the Forest Edge</h1>
               <p className="mt-4 sm:mt-6 text-sm sm:text-lg md:text-2xl text-white/90 font-light">
@@ -30,8 +32,8 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Booking Bar */}
-            <div className="absolute left-0 right-0 bottom-18 sm:bottom-6 px-4 sm:px-12">
+            {/* BOOKING BAR: Positioned absolutely relative to the OUTER WRAPPER */}
+            <div className="absolute left-0 right-0 bottom-18 sm:bottom-6 px-4 sm:px-12 z-20">
               <BookingBar />
             </div>
           </div>

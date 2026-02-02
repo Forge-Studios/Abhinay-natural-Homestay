@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./global.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton"; // [1] Import your component
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,12 +35,13 @@ export default function RootLayout({
       <body className="bg-app-bg text-brand-primary min-h-screen w-full pb-12 md:pb-1">
         <Navbar />
         <div className="flex flex-col min-h-screen w-full">
-          <main className="flex-grow w-full">
-            {children}
-          </main>
-          
+          <main className="flex-grow w-full">{children}</main>
+
           <Footer />
         </div>
+
+        {/* [2] WhatsApp Button is placed here so it persists across all pages */}
+        <WhatsAppButton phoneNumber="919876543210" />
       </body>
     </html>
   );
