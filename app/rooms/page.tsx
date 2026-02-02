@@ -3,6 +3,8 @@ import Section from "@/components/base/Section";
 import ImageBgCard from "@/components/ImageBgCard";
 import TwoColSection from "@/components/TwoColSection";
 import { Bed, Square, Star, Users, Wind } from "lucide-react";
+import { Attractions } from "./attractions";
+import FooterCtaSection from "./footerCTA";
 
 const rooms = [
   {
@@ -40,10 +42,27 @@ const rooms = [
   },
 ];
 
+const attractions = [
+  {
+    title: "Dine by Design",
+    description: "From a candlelit dinner on a cliffside pavilion to a starlit beach picnic surrounded by torches, our “Dine by Design” experience.",
+    highlighted: true,
+  },
+  {
+    title: "Local Living Encounters",
+    description:
+      "Step into the daily life of a local village, learn the art of traditional weaving, or harvest spices alongside a farmer in the morning sun.",
+  },
+  {
+    title: "Sunrise Awakening Rituals",
+    description: "Begin your morning with guided yoga on a cliff overlooking the sea, followed by a nourishing herbal elixir.",
+  },
+];
+
 export default function RoomsPage() {
   return (
     <main className="bg-app-bg min-h-screen pt-36 pb-24">
-      <div className="max-w-[95vw] 2xl:max-w-400 mx-auto px-6">
+      <div className="max-w-[95vw] 2xl:max-w-400 mx-auto">
         {/* 1. HEADER SECTION */}
         <Section fullWidth={true} className="pt-0!">
           <ImageBgCard images={["https://images.unsplash.com/photo-1499793983690-e29da59ef1c2"]} className="p-8 rounded-[2.5rem]">
@@ -158,8 +177,11 @@ export default function RoomsPage() {
                   className={`
                     w-full h-120 lg:h-150
                     shadow-2xl overflow-hidden
-                    
-                    ${index % 2 !== 0 ? "rounded-tr-[3rem] rounded-br-[3rem] rounded-l-none" : "rounded-tl-[3rem] rounded-bl-[3rem] rounded-r-none"}
+                    ${`rounded-tl-[3rem] rounded-tr-[3rem] rounded-b-none ${
+                      index % 2 !== 0
+                        ? "lg:rounded-tr-[3rem] lg:rounded-br-[3rem] lg:rounded-tl-none lg:rounded-bl-none"
+                        : "lg:rounded-tl-[3rem] lg:rounded-bl-[3rem] lg:rounded-tr-none lg:rounded-br-none"
+                    }`}
                     group
                   `}
                   overlay={false}
@@ -175,7 +197,7 @@ export default function RoomsPage() {
               }
               right={
                 /* Details Content */
-                <div className="space-y-8 px-16">
+                <div className="space-y-8 px-4 lg:px-16 py-8 lg:py-0">
                   <h2 className="text-4xl font-display font-bold text-brand-primary leading-tight">{room.title}</h2>
 
                   <p className="text-brand-primary/60 leading-relaxed font-light text-lg">{room.description}</p>
@@ -229,7 +251,7 @@ export default function RoomsPage() {
                   </div>
 
                   {/* Price and CTA */}
-                  <div className="grid grid-cols-2 gap-y-6 items-center">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 items-center">
                     <div>
                       <p className="text-[10px] font-bold text-brand-primary/40 uppercase tracking-widest">Starting From</p>
                       <p className="text-3xl font-display font-bold text-brand-primary">
@@ -238,7 +260,7 @@ export default function RoomsPage() {
                       </p>
                     </div>
 
-                    <div className="max-w-100 mt-2">
+                    <div className="max-w-100  mt-2">
                       <Button
                         type="link"
                         text="View Details"
@@ -256,6 +278,12 @@ export default function RoomsPage() {
             />
           ))}
         </Section>
+
+        {/* 4. Nearby Attractions */}
+        <Attractions />
+
+        {/* Footer CTA */}
+        <FooterCtaSection />
       </div>
     </main>
   );
