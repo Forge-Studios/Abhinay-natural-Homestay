@@ -20,14 +20,14 @@ export default function FooterCtaSection() {
       >
         {/* Content */}
         <div className="flex flex-col items-center justify-center h-full w-full max-w-3xl mx-auto text-center px-6">
-          <h1 className="text-white text-2xl md:text-3xl lg:text-4xl font-medium leading-tight">
-            Your Abhinay Experience Awaits
+          <h1 className="text-white text-2xl md:text-3xl lg:text-4xl font-display font-bold leading-tight">
+            Your <span className="text-app-bg">Abhinay Experience</span> Awaits
             <br />
             Book Your Experience Right Now
           </h1>
 
           <p className="mt-6 text-white/80 text-sm md:text-base leading-relaxed">
-            Whether you wish to relax by the pool, embark on a desert adventure, or explore the rich cultural heritage of Abu Dhabi, our resort offers
+            Whether you wish to relax by the pool, embark on a forest adventure, or explore the rich cultural heritage of Lolegaon, our resort offers
             a range of activities to suit your every mood.
           </p>
 
