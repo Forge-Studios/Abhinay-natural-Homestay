@@ -5,7 +5,6 @@ import Button from "@/components/base/Button";
 import Section from "@/components/base/Section";
 import ImageCarousel from "@/components/ImageCarousel";
 import StatCard from "@/components/StatCard";
-import TextCard from "@/components/TextCard";
 import resort from "@/public/images/resort.jpg";
 import Image from "next/image";
 
@@ -35,7 +34,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <Section className="py-16">
+    <Section fullWidth={true} className="py-16">
       {/* HERO */}
       <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -50,18 +49,7 @@ export default function AboutPage() {
               We invite you to explore the world through elegance, culture, and deeply rooted hospitality.
             </p>
 
-            <Button
-              type="button"
-              text="Contact Us"
-              size="lg"
-              rounded="3xl"
-              intensity="lg"
-              hasArrow
-              onPress={() => {
-                // navigate, open modal, scroll, etc.
-                alert("Contact clicked");
-              }}
-            />
+            <Button type="link" text="Contact Us" href="/contact" size="lg" rounded="3xl" intensity="lg" hasArrow />
           </div>
         </div>
       </section>
