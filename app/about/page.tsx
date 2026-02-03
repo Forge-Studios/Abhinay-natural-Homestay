@@ -49,18 +49,7 @@ export default function AboutPage() {
               We invite you to explore the world through elegance, culture, and deeply rooted hospitality.
             </p>
 
-            <Button
-              type="button"
-              text="Contact Us"
-              size="lg"
-              rounded="3xl"
-              intensity="lg"
-              hasArrow
-              onPress={() => {
-                // navigate, open modal, scroll, etc.
-                alert("Contact clicked");
-              }}
-            />
+            <Button type="link" text="Contact Us" href="/contact" size="lg" rounded="3xl" intensity="lg" hasArrow />
           </div>
         </div>
       </section>
