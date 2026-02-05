@@ -1,9 +1,27 @@
 "use client";
 
 import Form from "@/components/base/Form";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { ChevronDown, Mail, MapPin, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ContactPage() {
+  // --- CUSTOM DROPDOWN STATE ---
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedType, setSelectedType] = useState("General Inquiry");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const options = ["General Inquiry", "Group Booking", "Career", "Media"];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const inputStyles = `
     peer w-full px-5 py-4 pt-7
     bg-white/20 border border-brand-primary/10 
@@ -75,12 +93,11 @@ export default function ContactPage() {
               rounded="3xl"
               onSubmit={(e) => {
                 e.preventDefault();
-
                 const formData = new FormData(e.currentTarget);
+                // Add the custom dropdown value to the form data
+                formData.set("type", selectedType);
                 const data = Object.fromEntries(formData.entries());
-
                 console.log("Contact Form Submitted:", data);
-
                 alert("Message sent successfully!");
               }}
             >
@@ -95,14 +112,32 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="relative">
-                <select name="type" className={`${inputStyles} appearance-none`}>
-                  <option>General Inquiry</option>
-                  <option>Group Booking</option>
-                  <option>Career</option>
-                  <option>Media</option>
-                </select>
+              {/* FROSTED GLASS DROPDOWN */}
+              <div className="relative" ref={dropdownRef}>
+                <button type="button" onClick={() => setIsOpen(!isOpen)} className={`${inputStyles} text-left flex justify-between items-center`}>
+                  <span className="pt-2">{selectedType}</span>
+                  <ChevronDown className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} size={18} />
+                </button>
                 <label className="absolute left-5 top-2 text-[10px] uppercase tracking-widest text-brand-primary/60">Inquiry Type</label>
+
+                {isOpen && (
+                  <ul className="absolute left-0 right-0 mt-2 z-50 bg-white/30 backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-1 duration-200">
+                    {options.map((option) => (
+                      <li key={option}>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedType(option);
+                            setIsOpen(false);
+                          }}
+                          className="w-full text-left px-5 py-3 hover:bg-brand-primary/10 text-brand-primary transition-colors text-sm"
+                        >
+                          {option}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               <div className="relative">

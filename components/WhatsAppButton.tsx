@@ -1,5 +1,6 @@
 "use client";
 
+import { X } from "lucide-react"; // Import X icon for the close button
 import { useEffect, useRef, useState } from "react";
 
 type WhatsAppButtonProps = {
@@ -22,6 +23,7 @@ const options = [
 export default function WhatsAppButton({ phoneNumber }: WhatsAppButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false); // Track manual dismissal
   const menuRef = useRef<HTMLDivElement>(null);
 
   const playPopSound = () => {
@@ -42,9 +44,12 @@ export default function WhatsAppButton({ phoneNumber }: WhatsAppButtonProps) {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowTooltip(true), 3000);
+    // Only show if not manually dismissed
+    const timer = setTimeout(() => {
+      if (!isDismissed) setShowTooltip(true);
+    }, 3000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [isDismissed]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -64,6 +69,12 @@ export default function WhatsAppButton({ phoneNumber }: WhatsAppButtonProps) {
     setShowTooltip(false);
   };
 
+  const closeTooltip = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering the menu toggle if clicking the X
+    setShowTooltip(false);
+    setIsDismissed(true);
+  };
+
   const handleOptionClick = (message: string) => {
     playPopSound();
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -72,11 +83,18 @@ export default function WhatsAppButton({ phoneNumber }: WhatsAppButtonProps) {
   };
 
   return (
-    /*  clearance on mobile */
-    <div className="fixed bottom-32 sm:bottom-8 right-6 z-[60]" ref={menuRef}>
+    <div className="fixed bottom-24 sm:bottom-8 right-2 z-[60]" ref={menuRef}>
       {/* GREETING TOOLTIP */}
       {showTooltip && !isOpen && (
         <div className="absolute bottom-20 right-0 mb-2 w-48 bg-white text-brand-primary p-3 rounded-2xl shadow-xl border border-brand-primary/10 animate-in fade-in slide-in-from-bottom-2 duration-500">
+          {/* CLOSE BUTTON */}
+          <button
+            onClick={closeTooltip}
+            className="absolute -top-2 -right-2 w-6 h-6 bg-white border border-brand-primary/10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 transition-colors"
+          >
+            <X size={12} className="text-brand-secondary" />
+          </button>
+
           <p className="text-xs font-bold">Need help? 👋</p>
           <p className="text-[10px] opacity-70">Chat with us on WhatsApp!</p>
           <div className="absolute -bottom-1 right-8 w-2 h-2 bg-white rotate-45 border-r border-b border-brand-primary/10" />
@@ -109,7 +127,7 @@ export default function WhatsAppButton({ phoneNumber }: WhatsAppButtonProps) {
                   style={{ borderTopLeftRadius: "0.2rem" }}
                 >
                   <p className="text-[10px] font-bold uppercase text-[#075E54] mb-1">{option.title}</p>
-                  <p className="text-sm text-gray-800 leading-snug line-clamp-2 italic italic opacity-90">"{option.message}"</p>
+                  <p className="text-sm text-gray-800 leading-snug line-clamp-2 italic opacity-90">"{option.message}"</p>
                 </div>
               </button>
             ))}

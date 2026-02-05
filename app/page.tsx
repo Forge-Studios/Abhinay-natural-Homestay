@@ -1,39 +1,69 @@
+import IconTextCard from "@/components/IconTextCard";
+import BaseCard from "@/components/base/BaseCard";
 import Image from "next/image";
 import BookingBar from "../components/BookingBar";
-import IconTextCard from "@/components/IconTextCard";
+import { SITE_IMAGES } from "@/lib/images";
+
+const testimonials = [
+  {
+    name: "Sarah Jenkins",
+    role: "Nature Photographer",
+    content:
+      "The silence here is profound. I've stayed at many forest retreats, but none capture the balance of luxury and raw nature quite like this. The morning mist over the deck is unforgettable.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+  },
+  {
+    name: "David Chen",
+    role: "Weekend Traveler",
+    content: "The farm-to-table breakfast alone is worth the trip. You can tell every ingredient was picked just meters from your table.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+  },
+  {
+    name: "Elena Rodriguez",
+    role: "Yoga Instructor",
+    content:
+      "A truly spiritual experience. The private decks are perfectly positioned for sunrise meditation. My soul felt recharged after just two days.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+  },
+];
 
 export default function HomePage() {
   return (
     <main className="bg-app-bg min-h-screen font-body selection:bg-brand-accent/30">
-      {/* HERO */}
-      {/* HERO */}
+      {/* HERO SECTION */}
       <section className="pt-28 sm:pt-32 min-h-[90svh] flex items-end">
         <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6">
-          {/* OUTER WRAPPER: No overflow-hidden here so dropdowns can show */}
-          <div className="relative min-h-[80svh]">
-            {/* BACKGROUND LAYER: This handles the rounding and clipping of the image */}
-            <div className="absolute inset-0 rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
-                alt="Natural Homestay Forest Edge"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 1600px"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/80 via-brand-primary/40 to-transparent" />
+          <div className="relative min-h-[80svh] flex flex-col justify-between sm:block">
+            {/* BACKGROUND LAYER - VIDEO SWAP */}
+            <div className="absolute inset-0 rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl bg-brand-primary">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster="https://v40aqx8muaadwx3x.public.blob.vercel-storage.com/IMG-20230925-WA0019.jpg.jpeg"
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="https://v40aqx8muaadwx3x.public.blob.vercel-storage.com/4185240-hd_1280_720_25fps.mp4" type="video/mp4" />
+              </video>
+
+              {/* Overlays for readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-brand-primary/80 sm:from-brand-primary/60 sm:via-transparent sm:to-transparent" />
             </div>
 
             {/* CONTENT LAYER */}
-            <div className="relative z-10 px-6 sm:px-12 pt-12 sm:pt-20 max-w-4xl text-white">
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold leading-[1.05]">Natural Retreat on the Forest Edge</h1>
-              <p className="mt-4 sm:mt-6 text-sm sm:text-lg md:text-2xl text-white/90 font-light">
+            <div className="relative z-10 px-6 sm:px-12 pt-5 sm:pt-20 max-w-4xl text-white">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-display font-bold leading-[1.05]">Natural Retreat on the Forest Edge</h1>
+              <p className="mt-4 sm:mt-6 text-sm sm:text-lg md:text-2xl text-white/90 font-light max-w-[300px] sm:max-w-none">
                 Experience luxury where the forest meets the sky. Your escape into the wilderness begins here.
               </p>
             </div>
 
-            {/* BOOKING BAR: Positioned absolutely relative to the OUTER WRAPPER */}
-            <div className="absolute left-0 right-0 bottom-18 sm:bottom-6 px-4 sm:px-12 z-20">
+            {/* BOOKING BAR */}
+            <div className="absolute left-0 right-0 bottom-12 sm:bottom-6 px-4 sm:px-12 z-20">
               <BookingBar />
             </div>
           </div>
@@ -56,7 +86,6 @@ export default function HomePage() {
               intensity="2xl"
               className="hover:-translate-y-2 transition-transform"
             />
-
             <IconTextCard
               icon="🛖"
               title="Private Cottages"
@@ -64,7 +93,6 @@ export default function HomePage() {
               intensity="2xl"
               className="hover:-translate-y-2 transition-transform"
             />
-
             <IconTextCard
               icon="🌅"
               title="Nature Escapes"
@@ -76,31 +104,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* EXPERIENCE */}
+      {/* EXPERIENCE SECTION */}
       <section className="py-24 md:py-32 bg-brand-secondary/10">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Image */}
             <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl order-2 lg:order-1">
               <Image
-                src="https://images.unsplash.com/photo-1510798831971-661eb04b3739"
+                src={SITE_IMAGES.outside2}
                 alt="Forest Sanctuary"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
-
-            {/* Content */}
             <div className="space-y-8 order-1 lg:order-2">
               <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-sm">Since 2020</span>
-
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-primary leading-tight">A Sanctuary for the Soul</h2>
-
               <p className="text-brand-secondary text-lg md:text-xl font-light leading-loose max-w-xl">
                 Every stone and tree tells a story of harmony. Unplug from the digital world and reconnect with nature.
               </p>
-
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="px-8 py-4 bg-brand-accent text-white rounded-2xl font-bold tracking-widest shadow-lg hover:brightness-110">
                   Explore Cottages
@@ -110,6 +132,47 @@ export default function HomePage() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS SECTION */}
+      <section className="py-24 md:py-32 bg-brand-primary/5">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <header className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="max-w-2xl">
+              <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-sm">Guest Stories</span>
+              <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-primary">Loved by those who seek the wild.</h2>
+            </div>
+            <div className="flex items-center gap-3 bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-sm w-fit">
+              <span className="text-3xl font-bold text-brand-primary">4.9</span>
+              <div className="flex flex-col leading-tight">
+                <div className="flex text-yellow-500 text-xs">★★★★★</div>
+                <span className="text-[10px] uppercase tracking-widest font-bold opacity-60">Avg Guest Rating</span>
+              </div>
+            </div>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, idx) => (
+              <BaseCard key={idx} as="article" intensity="2xl" className="p-8 md:p-10 flex flex-col justify-between group">
+                <div>
+                  <div className="text-brand-accent text-5xl font-serif leading-none mb-6 group-hover:scale-110 transition-transform duration-500">
+                    “
+                  </div>
+                  <p className="text-brand-secondary text-lg md:text-xl leading-relaxed font-light mb-10 italic">{testimonial.content}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-brand-accent/30">
+                    <Image src={testimonial.image} alt={testimonial.name} fill className="object-cover" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-primary text-base leading-none">{testimonial.name}</h4>
+                    <p className="text-brand-secondary/60 text-sm mt-1.5 font-medium uppercase tracking-wider">{testimonial.role}</p>
+                  </div>
+                </div>
+              </BaseCard>
+            ))}
           </div>
         </div>
       </section>
