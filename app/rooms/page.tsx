@@ -1,7 +1,10 @@
+"use client";
+
 import Button from "@/components/base/Button";
 import Section from "@/components/base/Section";
 import ImageBgCard from "@/components/ImageBgCard";
 import TwoColSection from "@/components/TwoColSection";
+import { SITE_IMAGES } from "@/lib/images";
 import { Bed, Square, Star, Users, Wind } from "lucide-react";
 import { Attractions } from "./attractions";
 import FooterCtaSection from "./footerCTA";
@@ -15,7 +18,7 @@ const rooms = [
     size: "450 sq.ft",
     guests: "2 Adults",
     bed: "King Size",
-    images: ["https://images.unsplash.com/photo-1587061949409-02df41d5e562", "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2"],
+    images: [SITE_IMAGES.outside2, SITE_IMAGES.outside],
     tag: "Most Popular",
   },
   {
@@ -26,7 +29,7 @@ const rooms = [
     size: "600 sq.ft",
     guests: "2 Adults, 1 Child",
     bed: "Super King",
-    images: ["https://images.unsplash.com/photo-1587061949409-02df41d5e562", "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2"],
+    images: [SITE_IMAGES.outside3, SITE_IMAGES.roomDeluxe],
     tag: "Luxury",
   },
   {
@@ -37,25 +40,8 @@ const rooms = [
     size: "400 sq.ft",
     guests: "2 Adults",
     bed: "Queen Size",
-    images: ["https://images.unsplash.com/photo-1499793983690-e29da59ef1c2", "https://images.unsplash.com/photo-1587061949409-02df41d5e562"],
+    images: [SITE_IMAGES.roomSingle, SITE_IMAGES.outside],
     tag: "Eco-Friendly",
-  },
-];
-
-const attractions = [
-  {
-    title: "Dine by Design",
-    description: "From a candlelit dinner on a cliffside pavilion to a starlit beach picnic surrounded by torches, our “Dine by Design” experience.",
-    highlighted: true,
-  },
-  {
-    title: "Local Living Encounters",
-    description:
-      "Step into the daily life of a local village, learn the art of traditional weaving, or harvest spices alongside a farmer in the morning sun.",
-  },
-  {
-    title: "Sunrise Awakening Rituals",
-    description: "Begin your morning with guided yoga on a cliff overlooking the sea, followed by a nourishing herbal elixir.",
   },
 ];
 
@@ -65,7 +51,7 @@ export default function RoomsPage() {
       <div className="max-w-[95vw] 2xl:max-w-400 mx-auto">
         {/* 1. HEADER SECTION */}
         <Section fullWidth={true} className="pt-0!">
-          <ImageBgCard images={["https://images.unsplash.com/photo-1499793983690-e29da59ef1c2"]} className="p-8 rounded-[2.5rem]">
+          <ImageBgCard images={[SITE_IMAGES.image1]} className="p-8 rounded-[2.5rem]">
             <span className="text-white/70 font-bold tracking-[0.4em] uppercase text-xs">Accommodations</span>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white/70 mt-6 leading-tight">
               Our Signature <br /> Sanctuaries.
@@ -74,72 +60,18 @@ export default function RoomsPage() {
               Each room is a masterpiece of eco-luxury, designed to bring the outside in while providing the ultimate comfort.
             </p>
             <div className="max-w-max">
-              <Button
-                text="Explore Rooms"
-                hasArrow={true}
-                type="link"
-                href="#rooms-listing"
-                className="mt-12 bg-white/20 text-white font-bold tracking-widest"
-                borderOpacity={0}
-              />
+              <span className="max-w-max">
+                <Button
+                  text="Explore Rooms"
+                  hasArrow={true}
+                  type="link"
+                  href="#rooms-listing"
+                  className="mt-12 bg-white/20 text-white font-bold tracking-widest"
+                  borderOpacity={0}
+                />
+              </span>
             </div>
           </ImageBgCard>
-        </Section>
-
-        <Section>
-          <div className="text-center max-w-3xl mx-auto pb-10 space-y-4">
-            <p className="text-5xl text-brand-accent">
-              What our clients think about the <strong>Abhinay Natural Homestay</strong>
-            </p>
-            <p className="text-sm text-brand-muted">Moments that shaped who we are - and where we're going</p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <ImageBgCard
-              images={["https://images.unsplash.com/photo-1499793983690-e29da59ef1c2"]}
-              className="h-90 col-span-1 lg:col-span-8 rounded-[2.5rem]"
-              overlayClassName="bg-black/40"
-            >
-              <div className="p-8 text-white max-w-xl">
-                <p className="text-lg leading-relaxed">
-                  Traveling alone can be intimidating, but at Abhinay I felt embraced, not just accommodated. The staff remembered my name, my morning
-                  tea preference, and even recommended a local market that became the highlight of my trip.
-                </p>
-
-                <p className="mt-6 text-sm opacity-80">Review Our Short Video</p>
-              </div>
-            </ImageBgCard>
-
-            <div className="col-span-1 lg:col-span-4 bg-slate-600 rounded-[2.5rem] p-10 text-white flex flex-col justify-between">
-              <p className="text-sm opacity-80">Facts & Numbers</p>
-
-              <div>
-                <h2 className="text-7xl font-bold">80%</h2>
-                <p className="mt-4 text-lg opacity-90">of Customers recommend Abhinay for The Best Resort</p>
-              </div>
-            </div>
-
-            <div className="col-span-1 lg:col-span-4 bg-slate-600 rounded-[2.5rem] p-6 text-white space-y-4">
-              <p className="text-sm opacity-80">Customer Stories</p>
-
-              <h3 className="text-xl font-medium">How they feel comfortable holiday with Abhinay resort</h3>
-
-              <div
-                className="h-40 rounded-2xl bg-cover bg-center"
-                style={{
-                  backgroundImage: "url(https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80)",
-                }}
-              />
-            </div>
-
-            <div className="col-span-1 lg:col-span-8 bg-white rounded-[2.5rem] p-10 flex flex-col justify-between">
-              <p className="text-lg text-gray-800 leading-relaxed">
-                Our stay at Abhinay was nothing short of magical. From the private beachfront dinner to the traditional blessing ceremony arranged
-                just for us, every moment felt deeply personal.
-              </p>
-
-              <p className="text-sm text-gray-400 mt-10">Why ABHINAY?</p>
-            </div>
-          </div>
         </Section>
 
         {/* 2. CATEGORY FILTER (Desktop only for minimalist look) */}
@@ -231,22 +163,10 @@ export default function RoomsPage() {
                       <p>48 Reviews</p>
                     </div>
                     <div className="flex items-center">
-                      <img
-                        src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=200"
-                        className="w-12 h-12 rounded-full object-cover border-2 border-white ml-0"
-                      />
-                      <img
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200"
-                        className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5"
-                      />
-                      <img
-                        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200"
-                        className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5"
-                      />
-                      <img
-                        src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200"
-                        className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5"
-                      />
+                      <img src="https://i.pravatar.cc/100?img=32" className="w-12 h-12 rounded-full object-cover border-2 border-white ml-0" />
+                      <img src="https://i.pravatar.cc/100?img=44" className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5" />
+                      <img src="https://i.pravatar.cc/100?img=47" className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5" />
+                      <img src="https://i.pravatar.cc/100?img=12" className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5" />
                     </div>
                   </div>
 

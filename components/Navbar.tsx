@@ -1,6 +1,6 @@
 "use client";
 
-import { Leaf, Home, Info, Bed, HelpCircle, Mail } from "lucide-react";
+import { Bed, HelpCircle, Home, Info, Leaf, Mail } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -27,8 +27,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* --- DESKTOP TOP NAVBAR --- */}
-      <nav className="fixed top-6 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
+      {/* --- TOP NAVBAR --- */}
+      <nav className="fixed top-4 md:top-6 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
         <div
           className={`
             relative flex items-center justify-between px-6 md:px-10 rounded-full
@@ -38,21 +38,21 @@ export default function Navbar() {
             transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
             ${
               isScrolled
-                ? "w-[85%] max-w-[1100px] h-14 md:h-16 bg-white/70 shadow-2xl translate-y-[-4px]"
-                : "w-full max-w-[95vw] 2xl:max-w-[1600px] h-20 translate-y-0"
+                ? "w-[85%] max-w-[1100px] h-12 md:h-16 bg-white/70 shadow-2xl translate-y-[-4px]"
+                : "w-full max-w-[95vw] 2xl:max-w-[1600px] h-14 md:h-20 translate-y-0"
             }
           `}
         >
-          {/* Logo Section with Fluid Scale */}
+          {/* Logo Section */}
           <Link href="/" className="flex flex-col items-center group shrink-0">
             <Leaf
               className={`text-brand-primary transition-all duration-500 ease-out group-hover:rotate-12 group-hover:scale-110 ${
-                isScrolled ? "scale-75 md:scale-90" : "scale-100"
+                isScrolled ? "scale-75 md:scale-90" : "scale-90 md:scale-100"
               }`}
-              size={20}
+              size={18}
             />
             <div className="text-center font-display leading-tight">
-              <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-brand-primary block">ABHINAY</span>
+              <span className="text-[9px] md:text-xs font-bold tracking-[0.3em] text-brand-primary block">ABHINAY</span>
               <div
                 className={`
                 transition-all duration-500 ease-in-out overflow-hidden
@@ -64,7 +64,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Links - Hover Lift Animation */}
+          {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-10">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -94,7 +94,7 @@ export default function Navbar() {
           <div className="lg:hidden">
             <Link
               href="/rooms"
-              className="text-[9px] font-bold tracking-widest bg-brand-primary text-white px-5 py-2.5 rounded-full shadow-lg shadow-brand-primary/20 active:scale-95 transition-transform"
+              className="text-[8px] font-bold tracking-widest bg-brand-primary text-white px-4 py-2 rounded-full shadow-lg shadow-brand-primary/20 active:scale-95 transition-transform"
             >
               BOOK
             </Link>
@@ -103,42 +103,42 @@ export default function Navbar() {
       </nav>
 
       {/* --- MOBILE BOTTOM NAVIGATION --- */}
-      <div className="lg:hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-[92vw] max-w-[420px]">
-        <div className="bg-white/80 backdrop-blur-3xl border border-white/50 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-2 flex justify-around items-center">
+      <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[92vw] max-w-[400px]">
+        <div className="bg-white/80 backdrop-blur-3xl border border-white/50 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.15)] p-1 flex justify-around items-center">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             const Icon = link.icon;
 
             return (
-              <Link key={link.name} href={link.href} className="flex flex-col items-center gap-1 group relative flex-1 py-2">
-                {/* Icon Container with "Pop" Animation */}
+              <Link key={link.name} href={link.href} className="flex flex-col items-center group relative flex-1 py-1.5">
+                {/* Slimmer Icon Container */}
                 <div
                   className={`
-                  p-2.5 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                  p-1.5 rounded-xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                   ${
                     isActive
-                      ? "bg-brand-primary text-white scale-110 -translate-y-2 shadow-lg shadow-brand-primary/30"
-                      : "text-brand-secondary hover:bg-gray-100 active:scale-90"
+                      ? "bg-brand-primary text-white scale-110 -translate-y-1.5 shadow-md shadow-brand-primary/30"
+                      : "text-brand-secondary active:scale-90"
                   }
                 `}
                 >
-                  <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
+                  <Icon size={16} strokeWidth={isActive ? 2.5 : 2} />
                 </div>
 
-                {/* Dynamic Label */}
+                {/* Slimmer Label */}
                 <span
                   className={`
-                  text-[9px] font-bold tracking-tight transition-all duration-300
-                  ${isActive ? "opacity-100 translate-y-0 text-brand-primary" : "opacity-60 -translate-y-1"}
+                  text-[8px] font-bold tracking-tight transition-all duration-300 mt-0.5
+                  ${isActive ? "opacity-100 translate-y-0 text-brand-primary" : "opacity-60 -translate-y-0.5"}
                 `}
                 >
                   {link.name.split(" ")[0]}
                 </span>
 
-                {/* Active Indicator */}
+                {/* Active Indicator Dot */}
                 <div
                   className={`
-                  absolute bottom-0 w-1 h-1 bg-brand-primary rounded-full transition-all duration-500
+                  absolute bottom-0.5 w-1 h-1 bg-brand-primary rounded-full transition-all duration-500
                   ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-0"}
                 `}
                 />

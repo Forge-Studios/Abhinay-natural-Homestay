@@ -5,32 +5,33 @@ import Button from "@/components/base/Button";
 import Section from "@/components/base/Section";
 import ImageCarousel from "@/components/ImageCarousel";
 import StatCard from "@/components/StatCard";
-import resort from "@/public/images/resort.jpg";
+import { SITE_IMAGES } from "@/lib/images"; // Importing your new library
 import Image from "next/image";
 
 export default function AboutPage() {
+  // Updated Carousel to use your Blob images
   const resortImages = [
     {
       id: "1",
-      src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
-      alt: "Luxury Resort",
+      src: SITE_IMAGES.outside,
+      alt: "Abhinay Natural Homestay Exterior",
       title: "A Destination in Itself",
-      description: "Every resort tells a story of place, culture, and time.",
+      description: "Every corner tells a story of the hills, culture, and peace.",
     },
     {
       id: "2",
-      src: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&q=80",
-      alt: "Beach Paradise",
+      src: SITE_IMAGES.outside3,
+      alt: "Hill View",
       title: "Immersive Escapes",
-      description: "Designed for discovery, relaxation, and connection.",
+      description: "Designed for discovery, relaxation, and deep connection with nature.",
     },
   ];
 
   const stats = [
-    { number: "70+", title: "Cultures Celebrated", description: "Authentic traditions woven into every stay." },
-    { number: "1000+", title: "Curated Experiences", description: "Designed to immerse and inspire." },
-    { number: "20+", title: "Years of Craftsmanship", description: "Luxury rooted in heritage." },
-    { number: "80+", title: "Global Awards", description: "Design, sustainability, and excellence." },
+    { number: "100%", title: "Organic Cuisine", description: "Farm-to-table meals grown in our own gardens." },
+    { number: "360°", title: "Forest Views", description: "Every room opens up to the untouched wilderness." },
+    { number: "2020", title: "Year Established", description: "Luxury rooted in mountain heritage." },
+    { number: "5.0", title: "Guest Rating", description: "Excellence in hospitality and natural living." },
   ];
 
   return (
@@ -46,7 +47,7 @@ export default function AboutPage() {
 
           <div className="lg:col-span-5 space-y-8">
             <p className="text-lg md:text-xl leading-relaxed text-[#3F4C1B]/90">
-              We invite you to explore the world through elegance, culture, and deeply rooted hospitality.
+              We invite you to explore the world through elegance, culture, and deeply rooted hospitality at Abhinay.
             </p>
 
             <Button type="link" text="Contact Us" href="/contact" size="lg" rounded="3xl" intensity="lg" hasArrow />
@@ -58,9 +59,9 @@ export default function AboutPage() {
       <section className="px-6 md:px-12 py-20 ">
         <div className="max-w-7xl mx-auto space-y-12">
           <header className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#3F4C1B]">Every Resort is a Living Story</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#3F4C1B]">A Living Story</h2>
             <p className="text-base leading-relaxed opacity-80 text-[#3F4C1B]">
-              More than destinations — our resorts are gateways into the soul of a place.
+              Abhinay is more than a stay — it is a gateway into the soul of the forest.
             </p>
           </header>
 
@@ -85,19 +86,19 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Sticky Story */}
+          {/* Sticky Story - Using SITE_IMAGES.outside2 */}
           <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-10">
             <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl relative">
-              <Image src={resort} alt="Heritage Resort" fill className="object-cover" />
+              <Image src={SITE_IMAGES.outside2} alt="Abhinay Heritage View" fill className="object-cover" />
             </div>
 
             <div className="max-w-md">
               <h3 className="text-xl font-semibold mb-4 text-[#3F4C1B]">A Journey Through Time</h3>
               <p className="leading-relaxed opacity-80 text-[#3F4C1B]">
-                Founded on the belief that meaningful journeys transform us, our story began with a single resort and a timeless philosophy.
+                Founded on the belief that meaningful journeys transform us, Abhinay began with a vision to preserve the mountain spirit.
               </p>
 
-              <p className="mt-4 italic opacity-70 text-[#3F4C1B]">“Luxury is not the destination — it’s the memory you take home.”</p>
+              <p className="mt-4 italic opacity-70 text-[#3F4C1B]">“Luxury is not the destination — it’s the peace you take home.”</p>
             </div>
           </div>
         </div>
@@ -108,7 +109,7 @@ export default function AboutPage() {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-4">
             <h2 className="text-4xl md:text-5xl font-bold text-[#3F4C1B]">Frequently Asked Questions</h2>
-            <p className="mt-6 opacity-70 text-[#3F4C1B]">Everything you need to know about our philosophy and experiences.</p>
+            <p className="mt-6 opacity-70 text-[#3F4C1B]">Everything you need to know about our philosophy.</p>
           </div>
 
           <div className="lg:col-span-8">
@@ -122,12 +123,12 @@ export default function AboutPage() {
                 {
                   id: "experiences",
                   title: "Unique Experiences",
-                  content: "Each experience is designed to immerse you in local traditions and natural beauty.",
+                  content: "From guided forest treks to organic cooking classes, our experiences are truly local.",
                 },
                 {
                   id: "philosophy",
                   title: "Our Philosophy",
-                  content: "Our resorts are gateways to understanding the soul of a destination.",
+                  content: "Sustainability and hospitality are the twin pillars of the Abhinay experience.",
                 },
               ]}
             />

@@ -1,18 +1,18 @@
 "use client";
-import React from "react";
-import Image from "next/image";
 import BaseCard from "@/components/base/BaseCard";
+import { SITE_IMAGES } from "@/lib/images";
+import Image from "next/image";
 
-// Mock data for your resort images
+// Updated data using your SITE_IMAGES library
 const resortImages = [
-  { id: 1, src: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb", alt: "Resort Exterior", height: "h-64" },
-  { id: 2, src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d", alt: "Infinity Pool", height: "h-96" },
-  { id: 3, src: "https://images.unsplash.com/photo-1566073771259-6a8506099945", alt: "Dining Area", height: "h-80" },
-  { id: 4, src: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7", alt: "Luxury Suite", height: "h-72" },
-  { id: 5, src: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4", alt: "Spa Room", height: "h-[28rem]" },
-  { id: 6, src: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2", alt: "Beach View", height: "h-60" },
-  { id: 7, src: "https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd", alt: "Garden Walkway", height: "h-96" },
-  { id: 8, src: "https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd", alt: "Night View", height: "h-80" },
+  { id: 1, src: SITE_IMAGES.image1, alt: "Abhinay Main Entrance", height: "h-64" },
+  { id: 2, src: SITE_IMAGES.outside, alt: "Lush Forest Surroundings", height: "h-96" },
+  { id: 3, src: SITE_IMAGES.roomDeluxe, alt: "Deluxe Suite Interior", height: "h-80" },
+  { id: 4, src: SITE_IMAGES.outside2, alt: "Mountain Heritage View", height: "h-72" },
+  { id: 5, src: SITE_IMAGES.image2, alt: "Natural Textures", height: "h-[28rem]" },
+  { id: 6, src: SITE_IMAGES.roomSingle, alt: "Cozy Single Room", height: "h-60" },
+  { id: 7, src: SITE_IMAGES.outside3, alt: "Morning Mist Walkway", height: "h-96" },
+  { id: 8, src: SITE_IMAGES.image1, alt: "Morning Yoga Session", height: "h-80" },
 ];
 
 export default function GalleryPage() {
