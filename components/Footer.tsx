@@ -37,7 +37,7 @@ export default function Footer() {
             ABHINAY
           </h3>
           <p className="text-brand-primary/60 max-w-sm leading-relaxed text-sm font-light italic">
-            "A sanctuary designed for deep rest and natural connection. Reconnect with the wild in comfort."
+            "A homestay designed for deep rest and natural connection. Reconnect with the wild in comfort."
           </p>
         </div>
 

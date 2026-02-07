@@ -1,17 +1,19 @@
 "use client";
 
 import Form from "@/components/base/Form";
+import Toast from "@/components/base/Toast"; 
 import { ChevronDown, Mail, MapPin, Phone } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export default function ContactPage() {
-  // --- CUSTOM DROPDOWN STATE ---
   const [isOpen, setIsOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("General Inquiry");
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const options = ["General Inquiry", "Group Booking", "Career", "Media"];
+  const [isPending, setIsPending] = useState(false);
+  const [showToast, setShowToast] = useState(false); // Toast visibility state
 
-  // Close dropdown when clicking outside
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const options = ["General Inquiry", "Single Booking", "Group Booking", "Others"];
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -22,12 +24,43 @@ export default function ContactPage() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isPending) return;
+
+    setIsPending(true);
+    const formData = new FormData(e.currentTarget);
+    formData.set("subject", `[${selectedType}] Website Inquiry`);
+
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      // SUCCESS: Trigger Toast and Reset
+      setShowToast(true);
+      e.currentTarget.reset();
+      setSelectedType("General Inquiry");
+    } catch (err) {
+      console.log("Something went wrong. Please try again.");
+    } finally {
+      setIsPending(false);
+    }
+  };
+
   const inputStyles = `
     peer w-full px-5 py-4 pt-7
     bg-white/20 border border-brand-primary/10 
     rounded-2xl text-brand-primary outline-none 
     placeholder-transparent
     focus:border-brand-primary/30 transition-all duration-300
+    disabled:opacity-50
   `;
 
   const labelStyles = `
@@ -40,7 +73,7 @@ export default function ContactPage() {
   return (
     <main className="bg-app-bg min-h-screen pt-28 pb-24">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-        {/* HEADER */}
+        {/* HEADER SECTION */}
         <section className="max-w-3xl mb-14">
           <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-xs">Reach Out</span>
           <h1 className="text-4xl sm:text-6xl font-display font-bold text-brand-primary mt-6">Connect with the Heart of the Wild</h1>
@@ -49,27 +82,12 @@ export default function ContactPage() {
           </p>
         </section>
 
-        {/* QUICK CONTACT ACTIONS (Always Visible) */}
+        {/* QUICK CONTACT ACTIONS */}
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
           {[
-            {
-              icon: <MapPin size={18} />,
-              title: "Location",
-              value: "Phaparkheti, WB",
-              color: "bg-brand-primary",
-            },
-            {
-              icon: <Phone size={18} />,
-              title: "Call",
-              value: "+91 98765 43210",
-              color: "bg-brand-muted",
-            },
-            {
-              icon: <Mail size={18} />,
-              title: "Email",
-              value: "hello@abhinaynatural.com",
-              color: "bg-brand-accent",
-            },
+            { icon: <MapPin size={18} />, title: "Location", value: "Phaparkheti, WB", color: "bg-brand-primary" },
+            { icon: <Phone size={18} />, title: "Call", value: "+91 98765 43210", color: "bg-brand-muted" },
+            { icon: <Mail size={18} />, title: "Email", value: "hello@abhinaynatural.com", color: "bg-brand-accent" },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-4 bg-white/40 backdrop-blur-md p-5 rounded-2xl border border-white/20">
               <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center text-white`}>{item.icon}</div>
@@ -83,38 +101,35 @@ export default function ContactPage() {
 
         {/* MAIN CONTENT */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* FORM — PRIMARY */}
           <div className="lg:col-span-7 order-1">
             <Form
               title="Send a Message"
               description="Tell us what you’re looking for."
               submitLabel="Send Message"
+              isLoading={isPending}
               intensity="xl"
               rounded="3xl"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const formData = new FormData(e.currentTarget);
-                // Add the custom dropdown value to the form data
-                formData.set("type", selectedType);
-                const data = Object.fromEntries(formData.entries());
-                console.log("Contact Form Submitted:", data);
-                alert("Message sent successfully!");
-              }}
+              onSubmit={handleContactSubmit}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="relative">
-                  <input name="name" placeholder=" " className={inputStyles} required />
+                  <input name="name" placeholder=" " className={inputStyles} required disabled={isPending} />
                   <label className={labelStyles}>Full Name</label>
                 </div>
                 <div className="relative">
-                  <input name="email" type="email" placeholder=" " className={inputStyles} required />
+                  <input name="email" type="email" placeholder=" " className={inputStyles} required disabled={isPending} />
                   <label className={labelStyles}>Email Address</label>
                 </div>
               </div>
 
               {/* FROSTED GLASS DROPDOWN */}
               <div className="relative" ref={dropdownRef}>
-                <button type="button" onClick={() => setIsOpen(!isOpen)} className={`${inputStyles} text-left flex justify-between items-center`}>
+                <button
+                  type="button"
+                  disabled={isPending}
+                  onClick={() => setIsOpen(!isOpen)}
+                  className={`${inputStyles} text-left flex justify-between items-center`}
+                >
                   <span className="pt-2">{selectedType}</span>
                   <ChevronDown className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} size={18} />
                 </button>
@@ -141,13 +156,13 @@ export default function ContactPage() {
               </div>
 
               <div className="relative">
-                <textarea rows={5} name="message" placeholder=" " className={`${inputStyles} resize-none`} required />
+                <textarea rows={5} name="message" placeholder=" " className={`${inputStyles} resize-none`} required disabled={isPending} />
                 <label className={labelStyles}>Message</label>
               </div>
             </Form>
           </div>
 
-          {/* MAP — SECONDARY */}
+          {/* MAP */}
           <aside className="lg:col-span-5 order-2">
             <div className="bg-white/40 backdrop-blur-md p-4 rounded-3xl border border-white/20 h-[280px] sm:h-[360px] lg:h-full">
               <iframe
@@ -160,6 +175,9 @@ export default function ContactPage() {
           </aside>
         </section>
       </div>
+
+      {/* TOAST NOTIFICATION */}
+      <Toast isVisible={showToast} message="Message sent! We've also sent a confirmation to your inbox." onClose={() => setShowToast(false)} />
     </main>
   );
 }
