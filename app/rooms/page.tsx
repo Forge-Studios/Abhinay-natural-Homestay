@@ -45,7 +45,21 @@ const rooms = [
   },
 ];
 
+const WHATSAPP_NUMBER = "1234567890"; // Replace with actual number
+
 export default function RoomsPage() {
+  const handleRoomDetails = (roomType: String) => {
+    const message =
+      `*New Booking Enquiry* \n\n` +
+      `Can I get more details about the *${roomType}* and know about availibility?\n\n` +
+      `Looking forward to experiencing the tranquility of Abhinay Natural Homestay!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <main className="bg-app-bg min-h-screen pt-36 pb-24">
       <div className="max-w-[95vw] 2xl:max-w-400 mx-auto">
@@ -182,14 +196,15 @@ export default function RoomsPage() {
 
                     <div className="max-w-100  mt-2">
                       <Button
-                        type="link"
+                        type="button"
+                        onPress={() => handleRoomDetails(room.title)}
                         text="View Details"
                         href="#"
                         size="md"
                         hasArrow={false}
                         intensity="none"
                         borderOpacity={100}
-                        className="text-brand-primary font-bold underline-offset-4"
+                        className="text-brand-primary font-bold underline-offset-4 cursor-pointer"
                       />
                     </div>
                   </div>
