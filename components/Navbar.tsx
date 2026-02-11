@@ -1,6 +1,6 @@
 "use client";
 
-import { Bed, HelpCircle, Home, Info, Leaf, Mail } from "lucide-react";
+import { Bed, Home, Info, Leaf, Mail, Image } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: "HOME", href: "/", icon: Home },
     { name: "ABOUT", href: "/about", icon: Info },
     { name: "ROOMS", href: "/rooms", icon: Bed },
-    { name: "GALLERY", href: "/gallery", icon: HelpCircle },
+    { name: "GALLERY", href: "/gallery", icon: Image },
     { name: "CONTACT US", href: "/contact", icon: Mail },
   ];
 

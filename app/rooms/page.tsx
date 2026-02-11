@@ -12,47 +12,60 @@ import FooterCtaSection from "./footerCTA";
 const rooms = [
   {
     id: 1,
-    title: "Forest Edge Cottage",
-    description: "A secluded sanctuary featuring panoramic views of the ancient woods and a private sit-out area.",
-    price: "18,000",
-    size: "450 sq.ft",
+    title: "Deluxe (Double Bedroom)",
+    description: "Our standard rooms for two. Choose between the Deluxe room with a Queen bed or our standalone King Bed Cottage for more privacy.",
+    price: "2,000 - 2,500",
+    size: "Cosy & Private",
     guests: "2 Adults",
-    bed: "King Size",
-    images: [SITE_IMAGES.outside2, SITE_IMAGES.outside],
-    tag: "Most Popular",
+    bed: "Queen or King Bed",
+    images: [SITE_IMAGES.roomSingle, SITE_IMAGES.outside2],
+    tag: "6 Rooms Total", // This covers your 6 double bed rooms
+    packageInfo: "Stay + Meals: ₹1600 per person",
   },
   {
     id: 2,
-    title: "Mountain Vista Suite",
-    description: "Located at the highest point of the estate, offering breath-taking views of the mist-covered peaks.",
-    price: "22,000",
-    size: "600 sq.ft",
-    guests: "2 Adults, 1 Child",
-    bed: "Super King",
-    images: [SITE_IMAGES.outside3, SITE_IMAGES.roomDeluxe],
-    tag: "Luxury",
+    title: "Deluxe Family (4-Bedded Room)",
+    description: "A spacious setup for small families or friends traveling together. Includes two comfortable Queen size beds.",
+    price: "3,000",
+    size: "Large",
+    guests: "4 People",
+    bed: "2 Queen sized beds",
+    images: [SITE_IMAGES.outside, SITE_IMAGES.outside2],
+    tag: "4 Rooms Available",
   },
   {
     id: 3,
-    title: "Riverside Bamboo Cabin",
-    description: "Built with sustainable local bamboo, this cabin lets you sleep to the rhythmic sound of the nearby stream.",
-    price: "15,500",
-    size: "400 sq.ft",
-    guests: "2 Adults",
-    bed: "Queen Size",
-    images: [SITE_IMAGES.roomSingle, SITE_IMAGES.outside],
-    tag: "Eco-Friendly",
+    title: "Super Family (5-Bedded Room)",
+    description: "Great for larger groups. These rooms are equipped with 1 King and 1 Queen sized beds to fit everyone comfortably.",
+    price: "3,500",
+    size: "Extra Large",
+    guests: "5 People",
+    bed: "1 King size and 1 Queen size Bed",
+    images: [SITE_IMAGES.roomDeluxe, SITE_IMAGES.outside3],
+    tag: "4 Rooms Available",
+  },
+  {
+    id: 4,
+    title: "Dormitory Hall",
+    description: "A large shared hall featuring five double beds. The best choice for trekking groups and big squads on a budget.",
+    price: "5,000",
+    size: "Shared Space",
+    guests: "10 people",
+    bed: "5 Double Beds",
+    images: [SITE_IMAGES.image1],
+    tag: "1 Dorm Available",
   },
 ];
 
 const WHATSAPP_NUMBER = "1234567890"; // Replace with actual number
 
 export default function RoomsPage() {
-  const handleRoomDetails = (roomType: String) => {
+  const handleRoomDetails = (roomType: string) => {
     const message =
       `*New Booking Enquiry* \n\n` +
-      `Can I get more details about the *${roomType}* and know about availibility?\n\n` +
-      `Looking forward to experiencing the tranquility of Abhinay Natural Homestay!`;
+      `I am interested in the *${roomType}*.\n` +
+      `Can you let me know about availability and the meal packages?\n\n` +
+      `Looking forward to staying at Abhinay Natural Homestay!`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
@@ -91,13 +104,13 @@ export default function RoomsPage() {
         {/* 2. CATEGORY FILTER (Desktop only for minimalist look) */}
         <Section id="rooms-listing" className="pb-0!">
           <div className="hidden md:flex gap-10 border-b border-brand-primary/10 pb-6">
-            {["ALL ROOMS", "COTTAGES", "SUITES", "CABINS"].map((cat, i) => (
+            {["ALL ROOMS", "DOUBLE", "FAMILY", "SUPER FAMILY", "DORMITORY"].map((cat, i) => (
               <a
                 key={i}
                 className={`text-[10px] font-bold tracking-[0.2em] transition-colors ${
                   i === 0 ? "text-brand-primary" : "text-brand-primary/40 hover:text-brand-primary"
                 }`}
-                href={`#room-${i}`}
+                href={i === 0 ? "#rooms-listing" : `#room-${i}`}
               >
                 {cat}
               </a>
