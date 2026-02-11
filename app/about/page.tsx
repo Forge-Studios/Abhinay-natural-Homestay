@@ -14,52 +14,95 @@ export default function AboutPage() {
       id: "1",
       src: SITE_IMAGES.outside,
       alt: "Abhinay Natural Homestay Exterior",
-      title: "A Destination in Itself",
-      description: "Every corner tells a story of the hills, culture, and peace.",
+      title: "The Road Ends Here",
+      description: "And the peace begins. Wood, earth, and the luxury of silence.",
     },
     {
       id: "2",
       src: SITE_IMAGES.outside3,
-      alt: "Hill View",
-      title: "Immersive Escapes",
-      description: "Designed for discovery, relaxation, and deep connection with nature.",
+      alt: "Hill View from Gorubathan",
+      title: "Mornings in Phaparkheti",
+      description: "Where the only alarm clock is the sun rising over the valley.",
     },
   ];
 
-  const stats = [
-    { number: "100%", title: "Organic Cuisine", description: "Farm-to-table meals grown in our own gardens." },
-    { number: "360°", title: "Forest Views", description: "Every room opens up to the untouched wilderness." },
-    { number: "2020", title: "Year Established", description: "Luxury rooted in mountain heritage." },
-    { number: "5.0", title: "Guest Rating", description: "Excellence in hospitality and natural living." },
+  const rhythms = [
+    {
+      number: "Nourish",
+      title: "The Taste of Home",
+      description:
+        "Food that remembers its roots. Seasonal greens from our garden, spices ground by hand, and recipes passed down through generations.",
+    },
+    {
+      number: "Breathe",
+      title: "Forest Therapy",
+      description: "The air here is different. It’s cool, pine-scented, and clears your mind the moment you step out of the car.",
+    },
+    {
+      number: "Connect",
+      title: "Stories by Firelight",
+      description: "Evenings are for the bonfire. No phones, just the crackle of wood, a sky full of stars, and conversations that matter.",
+    },
+    {
+      number: "Pause",
+      title: "The Gift of Time",
+      description:
+        "Here, there is no rush. Read a book, watch the mist roll in, or simply sit still. Rediscover the person you are when the noise stops.",
+    },
+  ];
+
+  const attractions = [
+    {
+      title: "The Song of Chel River",
+      location: "Fagu Valley",
+      description:
+        "A short journey down to the riverbed. It’s not just a view—take off your shoes, dip your feet in the crystal-cold mountain water, and let the current wash away your city stress.",
+    },
+    {
+      title: "History in the Clouds",
+      location: "Dalim Fort Ruins",
+      description:
+        "Stand atop the ruins of the historic Dalim Fort in Gorubathan. With the plains on one side and the Himalayas on the other, you’ll feel like you’re standing on the edge of the world.",
+    },
+    {
+      title: "The Secret Waterfalls",
+      location: "Hidden Trails",
+      description:
+        "Forget the tourist spots. Ask us to guide you to the hidden cascades tucked away in the Phaparkheti forests. Pure, untouched, and strictly for those who seek silence.",
+    },
   ];
 
   return (
-    /* Added overflow-x-hidden here to prevent the horizontal bar globally */
     <main className="bg-app-bg min-h-screen overflow-x-hidden">
-      {/* 1. HERO + STORY (Contained) */}
+      {/* HERO + INTRO */}
       <Section fullWidth={true} className="py-16 pb-0">
         <section className="px-6 md:px-12 lg:px-20 py-16 md:py-28">
           <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-[#3F4C1B]">
-                Where Luxury <br className="hidden sm:block" /> Meets Local Hills
+                Come as a Guest, <br className="hidden sm:block" />
+                Leave as Family.
               </h1>
             </div>
             <div className="lg:col-span-5 space-y-8">
               <p className="text-lg md:text-xl leading-relaxed text-[#3F4C1B]/90">
-                We invite you to explore the world through elegance, culture, and deeply rooted hospitality at Abhinay.
+                Life in the city is loud. <strong>Abhinay Natural Homestay</strong> is the antidote. Tucked away in the misty embrace of{" "}
+                <strong>Phaparkheti, Gorubathan</strong>, we offer you something rare: a chance to stop, breathe, and feel at home in the Himalayas.
               </p>
-              <Button type="link" text="Contact Us" href="/contact" size="lg" rounded="3xl" intensity="lg" hasArrow />
+              <Button type="link" text="Find Your Peace" href="/contact" size="lg" rounded="3xl" intensity="lg" hasArrow />
             </div>
           </div>
         </section>
 
+        {/* STORY SECTION */}
         <section className="px-6 md:px-12 py-20">
           <div className="max-w-7xl mx-auto space-y-12">
             <header className="max-w-2xl">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#3F4C1B]">A Living Story</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#3F4C1B]">More Than Just a Stay.</h2>
               <p className="text-base leading-relaxed opacity-80 text-[#3F4C1B]">
-                Abhinay is more than a stay — it is a gateway into the soul of the forest.
+                We didn't build a hotel; we opened our home. <strong>Tucked away in the quiet folds of Phaparkheti</strong>, Abhinay is built with
+                local stones, bamboo, and a lot of heart. We believe that true luxury isn't found in a marble lobby, but in a cup of tea made with
+                fresh milk, served with a smile that says, "We are glad you are here."
               </p>
             </header>
             <ImageCarousel images={resortImages} autoPlay autoPlayInterval={8000} />
@@ -67,81 +110,95 @@ export default function AboutPage() {
         </section>
       </Section>
 
-      {/* 2. STATS + HERITAGE (FULL WIDTH STRIPE) */}
-      {/* Changed w-screen to w-full. 
-          The 'relative' and 'overflow-hidden' ensure the SVG doesn't bleed.
-      */}
-      <section className="relative w-full py-24 overflow-hidden bg-[#3F4C1B]/5">
-        {/* FERN PATTERN */}
-        <div
-          className="absolute inset-0 opacity-[0.06] pointer-events-none z-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10C60 10 58 35 35 45M60 10C60 10 62 35 85 45M60 30C60 30 55 50 30 65M60 30C60 30 65 50 90 65M60 55C60 55 58 75 40 90M60 55C60 55 62 75 80 90M60 10V110' stroke='%233F4C1B' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
-            backgroundSize: "160px 160px",
-            transform: "rotate(-10deg) scale(1.1)",
-          }}
-        />
+      {/* NATURE + VALUES SECTION */}
+      <section className="relative w-full py-20 md:py-24 overflow-hidden bg-[#3F4C1B]/5">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 xl:px-20 grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-20">
+          {/* IMAGE COLUMN: On Tablet/Mobile, this sits on top to set the mood */}
+          <div className="xl:col-span-5 xl:sticky xl:top-32 space-y-10 order-1 xl:order-2">
+            <div className="aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl relative group">
+              <Image
+                src={SITE_IMAGES.outside2}
+                alt="The misty hills of Gorubathan from Abhinay Homestay"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-[#3F4C1B]/10 mix-blend-multiply pointer-events-none" />
+            </div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-12 gap-20">
-          <div className="lg:col-span-7">
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-[#3F4C1B]">
-              Rooted in Heritage,
-              <br /> Crafted for the World
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-              {stats.map((stat, i) => (
-                <StatCard key={i} stat={stat.number} title={stat.title} description={stat.description} />
-              ))}
+            {/* THE HOST NOTE: Adjusted font size for better tablet scaling */}
+            <div className="max-w-xl xl:max-w-md relative pl-6 md:pl-8 border-l-2 border-[#3F4C1B]/20">
+              <h3 className="text-xs md:text-sm uppercase tracking-[0.2em] font-bold mb-4 md:mb-6 text-[#3F4C1B]/60">A Note from the Hearth</h3>
+              <p className="text-lg md:text-xl xl:text-2xl leading-relaxed text-[#3F4C1B] italic font-medium">
+                "The mountains have a way of healing you, if you let them. At Abhinay, we just provide the space—the warm food, the clean bed, and the
+                open sky. The rest is between you and nature."
+              </p>
+              <div className="mt-4 md:mt-6 flex items-center gap-4">
+                <div className="h-[1px] w-8 bg-[#3F4C1B]/40"></div>
+                <p className="font-bold text-[#3F4C1B]">Your Hosts at Abhinay</p>
+              </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-10">
-            {/* DUOTONE IMAGE CONTAINER */}
-            <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl relative group">
-              <Image
-                src={SITE_IMAGES.outside2}
-                alt="Abhinay Heritage View"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-[#3F4C1B] mix-blend-color opacity-30 pointer-events-none" />
-              <div className="absolute inset-0 bg-[#3F4C1B] mix-blend-multiply opacity-20 pointer-events-none" />
-            </div>
-            <div className="max-w-md">
-              <h3 className="text-xl font-semibold mb-4 text-[#3F4C1B]">A Journey Through Time</h3>
-              <p className="leading-relaxed opacity-80 text-[#3F4C1B]">
-                Founded on the belief that meaningful journeys transform us, Abhinay began with a vision to preserve the mountain spirit.
-              </p>
-              <p className="mt-4 italic opacity-70 text-[#3F4C1B]">“Luxury is not the destination — it’s the peace you take home.”</p>
+          {/* RHYTHMS COLUMN: Now has full width on iPad Pro Portrait */}
+          <div className="xl:col-span-7 order-2 xl:order-1">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-10 md:mb-12 text-[#3F4C1B] tracking-tight">
+              Simple Living,
+              <br className="hidden sm:block" /> High Thinking
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
+              {rhythms.map((item, i) => (
+                <StatCard key={i} stat={item.number} title={item.title} description={item.description} />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. FAQ (Contained) */}
+      {/* LOCAL ATTRACTIONS SECTION */}
+      <section className="py-24 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#3F4C1B] mb-12">Wander Beyond Our Doorstep</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {attractions.map((attr, idx) => (
+              <div key={idx} className="space-y-4 p-6 rounded-3xl hover:bg-[#3F4C1B]/5 transition-colors duration-300">
+                <span className="text-sm font-bold tracking-wider uppercase text-[#3F4C1B]/60">{attr.location}</span>
+                <h3 className="text-2xl font-bold text-[#3F4C1B]">{attr.title}</h3>
+                <p className="opacity-80 text-[#3F4C1B] leading-relaxed">{attr.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
       <Section fullWidth={true} className="py-24">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#3F4C1B]">Frequently Asked Questions</h2>
-            <p className="mt-6 opacity-70 text-[#3F4C1B]">Everything you need to know about our philosophy.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#3F4C1B]">Before You Arrive</h2>
+            <p className="mt-6 opacity-70 text-[#3F4C1B]">We want your journey to be as peaceful as your stay.</p>
           </div>
+
           <div className="lg:col-span-8">
             <Accordion
               items={[
                 {
-                  id: "about",
-                  title: "About Our Brand",
-                  content: "We believe luxury is most meaningful when deeply connected to people, culture, and place.",
+                  id: "location",
+                  title: "Where exactly is 'Peace' located?",
+                  content:
+                    "We are in the village of Phaparkheti, Gorubathan. It is an easy drive from the plains, but far enough to leave the noise behind.",
                 },
                 {
-                  id: "experiences",
-                  title: "Unique Experiences",
-                  content: "From guided forest treks to organic cooking classes, our experiences are truly local.",
+                  id: "food",
+                  title: "What is on the menu?",
+                  content:
+                    "Comfort. We serve traditional Bengali and Pahari meals using organic vegetables from our own backyard. If you have a favorite childhood dish, let us know—we love to cook with heart.",
                 },
                 {
-                  id: "philosophy",
-                  title: "Our Philosophy",
-                  content: "Sustainability and hospitality are the twin pillars of the Abhinay experience.",
+                  id: "vibe",
+                  title: "Is this place right for me?",
+                  content:
+                    "If you are looking for loud parties and room service, perhaps not. But if you are looking for fireflies, homemade butter, and the sound of silence, then yes—you are coming home.",
                 },
               ]}
             />
