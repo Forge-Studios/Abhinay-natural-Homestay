@@ -50,7 +50,7 @@ export default function Button({
     lg: "rounded-lg",
     xl: "rounded-xl",
     "2xl": "rounded-2xl",
-    "3xl": "rounded-[2.5rem]", // Your specific brand radius
+    "3xl": "rounded-[2.5rem]",
     full: "rounded-full",
   };
 
@@ -58,11 +58,6 @@ export default function Button({
     sm: "text-sm px-5 py-2",
     md: "text-md px-7 py-3",
     lg: "text-lg px-9 py-4",
-  };
-
-  const typeMap = {
-    link: "a",
-    button: "button",
   };
 
   const borderOpacityMap: any = {
@@ -74,40 +69,50 @@ export default function Button({
     100: "border-brand-accent",
   };
 
-  const Component = typeMap[type] as ElementType;
+  const Component = (type === "link" ? "a" : "button") as ElementType;
 
   return (
-    <>
-      <Component
-        {...(type === "link" ? { href } : {})}
-        onClick={onPress && onPress}
-        className={`
-        flex items-between gap-2 w-full
-
+    <Component
+      {...(type === "link" ? { href } : {})}
+      onClick={onPress}
+      className={`
+        group
+        inline-flex items-center gap-3
         ${hasArrow ? "justify-between" : "justify-center"}
 
         ${sizeMap[size]}
-
-        /* Base Glass Styles using brand card-bg */
         ${blurMap[intensity]}
         bg-card-bg
 
-        /* Dynamic Border Opacity */
         border ${borderOpacityMap[borderOpacity || 0]}
-
-        /* Shape and Shadow */
         ${roundedMap[rounded]}
 
-        /* Hover Transitions */
-        transition-all duration-500 hover:bg-brand-accent hover:text-white
+        transition-all duration-300 ease-out
 
-        
+        /* Desktop Hover */
+        hover:bg-brand-accent hover:text-white hover:shadow-lg
 
-        ${className}`}
-      >
-        <p>{text}</p>
-        {hasArrow && <ArrowRight />}
-      </Component>
-    </>
+        /* Mobile Press */
+        active:scale-95 active:bg-brand-accent active:text-white
+
+        /* Accessibility */
+        focus:outline-none focus:ring-2 focus:ring-brand-accent/40
+
+        ${className}
+      `}
+    >
+      <span>{text}</span>
+
+      {hasArrow && (
+        <ArrowRight
+          size={18}
+          className="
+            transition-transform duration-300
+            group-hover:translate-x-1
+            group-active:translate-x-1
+          "
+        />
+      )}
+    </Component>
   );
 }
