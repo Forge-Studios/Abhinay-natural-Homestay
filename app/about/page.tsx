@@ -111,9 +111,20 @@ export default function AboutPage() {
       </Section>
 
       {/* NATURE + VALUES SECTION */}
+      {/* NATURE + VALUES SECTION */}
       <section className="relative w-full py-20 md:py-24 overflow-hidden bg-[#3F4C1B]/5">
+        {/* SUBTLE FERN PATTERN ADDED HERE */}
+        <div
+          className="absolute inset-0 opacity-[0.06] pointer-events-none z-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10C60 10 58 35 35 45M60 10C60 10 62 35 85 45M60 30C60 30 55 50 30 65M60 30C60 30 65 50 90 65M60 55C60 55 58 75 40 90M60 55C60 55 62 75 80 90M60 10V110' stroke='%233F4C1B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
+            backgroundSize: "180px 180px",
+            transform: "rotate(-15deg) scale(1.2)",
+          }}
+        />
+
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 xl:px-20 grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-20">
-          {/* IMAGE COLUMN: On Tablet/Mobile, this sits on top to set the mood */}
+          {/* IMAGE COLUMN */}
           <div className="xl:col-span-5 xl:sticky xl:top-32 space-y-10 order-1 xl:order-2">
             <div className="aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl relative group">
               <Image
@@ -125,7 +136,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-[#3F4C1B]/10 mix-blend-multiply pointer-events-none" />
             </div>
 
-            {/* THE HOST NOTE: Adjusted font size for better tablet scaling */}
+            {/* THE HOST NOTE */}
             <div className="max-w-xl xl:max-w-md relative pl-6 md:pl-8 border-l-2 border-[#3F4C1B]/20">
               <h3 className="text-xs md:text-sm uppercase tracking-[0.2em] font-bold mb-4 md:mb-6 text-[#3F4C1B]/60">A Note from the Hearth</h3>
               <p className="text-lg md:text-xl xl:text-2xl leading-relaxed text-[#3F4C1B] italic font-medium">
@@ -139,7 +150,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* RHYTHMS COLUMN: Now has full width on iPad Pro Portrait */}
+          {/* RHYTHMS COLUMN */}
           <div className="xl:col-span-7 order-2 xl:order-1">
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-10 md:mb-12 text-[#3F4C1B] tracking-tight">
               Simple Living,

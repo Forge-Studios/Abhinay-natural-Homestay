@@ -54,7 +54,7 @@ export default function BookingBar() {
   const containerRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
 
-  const WHATSAPP_NUMBER = "1234567890";
+  const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_MOBILE_NUM;
 
   const handleToggleMode = (mode: BookingMode) => {
     if (barRef.current) {
@@ -80,13 +80,13 @@ export default function BookingBar() {
       setToast({
         show: true,
         message: "Please select both arrival and departure dates first.",
-        type: "warning", 
+        type: "warning",
       });
       return;
     }
 
     const message =
-      `*New Booking Request* 🌿\n\n` +
+      `*New Booking Request* \n\n` +
       `*Arrival:* ${formatDate(startDate)}\n` +
       `*Departure:* ${formatDate(endDate)}\n` +
       `*Guests:* ${guests}\n\n` +
@@ -186,7 +186,7 @@ export default function BookingBar() {
                   <Users size={14} /> Guests
                 </label>
                 <Dropdown
-                  options={["2 Adults, 1 Room", "4 Adults, 2 Rooms", "1 Adult"]}
+                  options={["1 person", "2 persons", "3 Persons", "4 persons", "more than 4 persons"]}
                   onChange={(val) => setGuests(val)}
                   className="bg-transparent border-none p-0 font-bold text-sm"
                 />

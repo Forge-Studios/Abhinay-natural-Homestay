@@ -19,7 +19,7 @@ const rooms = [
     guests: "2 Adults",
     bed: "Queen or King Bed",
     images: [SITE_IMAGES.roomSingle, SITE_IMAGES.outside2],
-    tag: "6 Rooms Total", // This covers your 6 double bed rooms
+    tag: "6 Rooms Total",
     packageInfo: "Stay + Meals: ₹1600 per person",
   },
   {
@@ -57,7 +57,7 @@ const rooms = [
   },
 ];
 
-const WHATSAPP_NUMBER = "1234567890"; // Replace with actual number
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_MOBILE_NUM; 
 
 export default function RoomsPage() {
   const handleRoomDetails = (roomType: string) => {
@@ -69,7 +69,6 @@ export default function RoomsPage() {
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-
     window.open(whatsappUrl, "_blank");
   };
 
@@ -87,21 +86,19 @@ export default function RoomsPage() {
               Each room is a masterpiece of eco-luxury, designed to bring the outside in while providing the ultimate comfort.
             </p>
             <div className="max-w-max">
-              <span className="max-w-max">
-                <Button
-                  text="Explore Rooms"
-                  hasArrow={true}
-                  type="link"
-                  href="#rooms-listing"
-                  className="mt-12 bg-white/20 text-white font-bold tracking-widest"
-                  borderOpacity={0}
-                />
-              </span>
+              <Button
+                text="Explore Rooms"
+                hasArrow={true}
+                type="link"
+                href="#rooms-listing"
+                className="mt-12 bg-white/20 text-white font-bold tracking-widest"
+                borderOpacity={0}
+              />
             </div>
           </ImageBgCard>
         </Section>
 
-        {/* 2. CATEGORY FILTER (Desktop only for minimalist look) */}
+        {/* 2. CATEGORY FILTER */}
         <Section id="rooms-listing" className="pb-0!">
           <div className="hidden md:flex gap-10 border-b border-brand-primary/10 pb-6">
             {["ALL ROOMS", "DOUBLE", "FAMILY", "SUPER FAMILY", "DORMITORY"].map((cat, i) => (
@@ -110,7 +107,7 @@ export default function RoomsPage() {
                 className={`text-[10px] font-bold tracking-[0.2em] transition-colors ${
                   i === 0 ? "text-brand-primary" : "text-brand-primary/40 hover:text-brand-primary"
                 }`}
-                href={i === 0 ? "#rooms-listing" : `#room-${i}`}
+                href={i === 0 ? "#rooms-listing" : `#room-${rooms[i - 1]?.id || i}`}
               >
                 {cat}
               </a>
@@ -118,112 +115,120 @@ export default function RoomsPage() {
           </div>
         </Section>
 
-        {/* 3. ROOMS LISTING GRID */}
-
-        <Section className="space-y-32">
+        {/* 3. ROOMS LISTING GRID WITH SVG PATTERN */}
+        <Section className="space-y-24 md:space-y-32">
           {rooms.map((room, index) => (
-            <TwoColSection
-              key={room.id}
-              reverse={index % 2 !== 0}
-              gap="gap-6 lg:gap-12"
-              className="items-center"
-              bgColor="bg-brand-primary/20"
-              id={`room-${room.id}`}
-              left={
-                /* Image using ImageBgCard */
-                <ImageBgCard
-                  images={room.images} // ready for carousel later
-                  className={`
-                    w-full h-120 lg:h-150
-                    shadow-2xl overflow-hidden
-                    ${`rounded-tl-[3rem] rounded-tr-[3rem] rounded-b-none ${
-                      index % 2 !== 0
-                        ? "lg:rounded-tr-[3rem] lg:rounded-br-[3rem] lg:rounded-tl-none lg:rounded-bl-none"
-                        : "lg:rounded-tl-[3rem] lg:rounded-bl-[3rem] lg:rounded-tr-none lg:rounded-br-none"
-                    }`}
-                    group
-                  `}
-                  overlay={false}
-                >
-                  {/* Hover zoom effect */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-700" />
+            <div key={room.id} className="relative rounded-[3rem] overflow-hidden group/card shadow-sm">
+              {/* BRAND BACKGROUND COLOR */}
+              <div className="absolute inset-0 bg-brand-primary/20 z-0" />
 
-                  {/* Glassfrost Label */}
-                  <div className="absolute top-8 left-8 bg-white/60 backdrop-blur-md px-6 py-2 rounded-full border border-white/30">
-                    <span className="text-[10px] font-bold tracking-widest text-brand-primary uppercase">{room.tag}</span>
+              {/* FERN PATTERN LAYER */}
+              <div
+                className="absolute inset-0 opacity-[0.06] pointer-events-none z-10"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10C60 10 58 35 35 45M60 10C60 10 62 35 85 45M60 30C60 30 55 50 30 65M60 30C60 30 65 50 90 65M60 55C60 55 58 75 40 90M60 55C60 55 62 75 80 90M60 10V110' stroke='%233F4C1B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                  backgroundSize: "220px 220px",
+                  transform: index % 2 === 0 ? "rotate(-10deg) scale(1.1)" : "rotate(170deg) scale(1.1)",
+                }}
+              />
+
+              <TwoColSection
+                reverse={index % 2 !== 0}
+                gap="gap-0"
+                className="items-center relative z-20"
+                bgColor="transparent"
+                id={`room-${room.id}`}
+                left={
+                  <div className="w-full h-full">
+                    <ImageBgCard
+                      images={room.images}
+                      className={`
+                        w-full h-100 lg:h-150
+                        shadow-xl overflow-hidden
+                        ${
+                          index % 2 !== 0
+                            ? "lg:rounded-tr-[3rem] lg:rounded-br-[3rem] lg:rounded-tl-none lg:rounded-bl-none"
+                            : "lg:rounded-tl-[3rem] lg:rounded-bl-[3rem] lg:rounded-tr-none lg:rounded-br-none"
+                        }
+                        group
+                      `}
+                      overlay={false}
+                    >
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-700" />
+                      <div className="absolute top-8 left-8 bg-white/80 backdrop-blur-md px-6 py-2 rounded-full border border-white/30">
+                        <span className="text-[10px] font-bold tracking-widest text-brand-primary uppercase">{room.tag}</span>
+                      </div>
+                    </ImageBgCard>
                   </div>
-                </ImageBgCard>
-              }
-              right={
-                /* Details Content */
-                <div className="space-y-8 px-4 lg:px-16 py-8 lg:py-0">
-                  <h2 className="text-4xl font-display font-bold text-brand-primary leading-tight">{room.title}</h2>
+                }
+                right={
+                  <div className="space-y-8 px-6 lg:px-16 py-12 lg:py-0">
+                    <h2 className="text-4xl font-display font-bold text-brand-primary leading-tight">{room.title}</h2>
+                    <p className="text-brand-primary/70 leading-relaxed font-light text-lg">{room.description}</p>
 
-                  <p className="text-brand-primary/60 leading-relaxed font-light text-lg">{room.description}</p>
-
-                  {/* Specs Table */}
-                  <div className="grid grid-cols-2 gap-y-6 pt-4 border-t border-brand-primary/10">
-                    <div className="flex items-center gap-3 text-brand-primary/80">
-                      <Users size={18} className="text-brand-accent" />
-                      <span className="text-sm font-medium">{room.guests}</span>
+                    {/* Specs Table */}
+                    <div className="grid grid-cols-2 gap-y-6 pt-6 border-t border-brand-primary/10">
+                      <div className="flex items-center gap-3 text-brand-primary/80">
+                        <Users size={18} className="text-brand-accent" />
+                        <span className="text-sm font-medium">{room.guests}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-brand-primary/80">
+                        <Square size={18} className="text-brand-accent" />
+                        <span className="text-sm font-medium">{room.size}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-brand-primary/80">
+                        <Bed size={18} className="text-brand-accent" />
+                        <span className="text-sm font-medium">{room.bed}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-brand-primary/80">
+                        <Wind size={18} className="text-brand-accent" />
+                        <span className="text-sm font-medium">Climate Control</span>
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-3 text-brand-primary/80">
-                      <Square size={18} className="text-brand-accent" />
-                      <span className="text-sm font-medium">{room.size}</span>
+                    {/* Review Avatars */}
+                    <div className="flex items-center justify-between py-2">
+                      <div className="flex items-center gap-2 text-brand-primary/80">
+                        <Star fill="#3F4C1B" size={16} className="text-brand-accent" />
+                        <span className="text-sm font-bold">
+                          4.9/5 <span className="font-normal opacity-60">(Reviews)</span>
+                        </span>
+                      </div>
+                      <div className="flex items-center">
+                        {[1, 2, 3].map((i) => (
+                          <img
+                            key={i}
+                            src={`https://i.pravatar.cc/100?img=${i + 10 + index}`}
+                            className="w-10 h-10 rounded-full border-2 border-brand-bg -ml-3 first:ml-0 object-cover"
+                            alt="Guest"
+                          />
+                        ))}
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-3 text-brand-primary/80">
-                      <Bed size={18} className="text-brand-accent" />
-                      <span className="text-sm font-medium">{room.bed}</span>
-                    </div>
+                    {/* Price and CTA */}
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pt-4">
+                      <div>
+                        <p className="text-[10px] font-bold text-brand-primary/40 uppercase tracking-widest">Starting From</p>
+                        <p className="text-3xl font-display font-bold text-brand-primary">
+                          ₹{room.price}
+                          <span className="text-sm font-sans font-normal text-brand-primary/40"> / night</span>
+                        </p>
+                      </div>
 
-                    <div className="flex items-center gap-3 text-brand-primary/80">
-                      <Wind size={18} className="text-brand-accent" />
-                      <span className="text-sm font-medium">Climate Control</span>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-y-6">
-                    <div className="flex items-center gap-3 text-brand-primary/80">
-                      <Star fill="green" size={18} className="inline-block text-brand-accent" />
-                      <p>48 Reviews</p>
-                    </div>
-                    <div className="flex items-center">
-                      <img src="https://i.pravatar.cc/100?img=32" className="w-12 h-12 rounded-full object-cover border-2 border-white ml-0" />
-                      <img src="https://i.pravatar.cc/100?img=44" className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5" />
-                      <img src="https://i.pravatar.cc/100?img=47" className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5" />
-                      <img src="https://i.pravatar.cc/100?img=12" className="w-12 h-12 rounded-full object-cover border-2 border-white -ml-5" />
-                    </div>
-                  </div>
-
-                  {/* Price and CTA */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 items-center">
-                    <div>
-                      <p className="text-[10px] font-bold text-brand-primary/40 uppercase tracking-widest">Starting From</p>
-                      <p className="text-3xl font-display font-bold text-brand-primary">
-                        ₹{room.price}
-                        <span className="text-sm font-sans font-normal text-brand-primary/40"> / night</span>
-                      </p>
-                    </div>
-
-                    <div className="max-w-100  mt-2">
                       <Button
                         type="button"
                         onPress={() => handleRoomDetails(room.title)}
-                        text="View Details"
-                        href="#"
+                        text="Check Availability"
                         size="md"
-                        hasArrow={false}
-                        intensity="none"
-                        borderOpacity={100}
-                        className="text-brand-primary font-bold underline-offset-4 cursor-pointer"
+                        intensity="lg"
+                        className="bg-brand-primary text-white hover:bg-brand-primary/90 shadow-lg"
                       />
                     </div>
                   </div>
-                </div>
-              }
-            />
+                }
+              />
+            </div>
           ))}
         </Section>
 
