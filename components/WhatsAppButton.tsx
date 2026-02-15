@@ -16,7 +16,7 @@ const options = [
   {
     id: "queries",
     title: "Have Queries",
-    message: "Hello, I have some queries about your hotel. Can you please assist me?",
+    message: "Hello, I have some queries about your homestay. Can you please assist me?",
   },
 ];
 

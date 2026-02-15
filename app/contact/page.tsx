@@ -169,8 +169,9 @@ export default function ContactPage() {
                 className="w-full h-full rounded-2xl"
                 loading="lazy"
                 style={{ border: 0 }}
-                src="https://www.google.com/maps?q=27.0418,88.6883&z=14&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4372.777635032914!2d88.69382506526053!3d27.038082229801788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4059f516c776f%3A0x4c5e6cf574bc413b!2sAbhinay%20Natural%20Homestay!5e1!3m2!1sen!2sin!4v1771170887303!5m2!1sen!2sin"
               />
+
             </div>
           </aside>
         </section>

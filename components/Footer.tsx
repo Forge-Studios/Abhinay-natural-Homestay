@@ -77,8 +77,9 @@ export default function Footer() {
             <div className="flex items-start gap-3">
               <MapPin size={16} className="mt-1 text-brand-accent/60" />
               <span className="leading-tight">
-                123 Forest Edge Trail, <br />
-                Mountain Peak Region, 400101
+                N 88°41, 27°02, 16.8, 41 Phaparkheti,
+                <br />
+                Gorubathan, West Bengal 735231
               </span>
             </div>
           </div>

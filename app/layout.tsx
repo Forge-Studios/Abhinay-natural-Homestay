@@ -3,7 +3,8 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./global.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton"; // [1] Import your component
+import WhatsAppButton from "@/components/WhatsAppButton";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +26,8 @@ export const metadata: Metadata = {
   description: "Experience tranquility at Abhinay Natural Homestay. Book your stay in the heart of nature with modern eco-luxury comforts.",
 };
 
+const mobile_num = process.env.NEXT_PUBLIC_MOBILE_NUM!;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,7 +44,7 @@ export default function RootLayout({
         </div>
 
         {/* [2] WhatsApp Button is placed here so it persists across all pages */}
-        <WhatsAppButton phoneNumber="919876543210" />
+        <WhatsAppButton phoneNumber={mobile_num} />
       </body>
     </html>
   );
