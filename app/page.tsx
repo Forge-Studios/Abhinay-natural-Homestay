@@ -8,27 +8,27 @@ import BookingBar from "../components/BookingBar";
 
 const testimonials = [
   {
-    name: "Sarah Jenkins",
+    name: "Ananya Sharma",
     role: "Nature Photographer",
     content:
       "The silence here is profound. I've stayed at many forest retreats, but none capture the balance of luxury and raw nature quite like this. The morning mist over the deck is unforgettable.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+    image: "https://i.pravatar.cc/150?img=49",
   },
   {
-    name: "David Chen",
+    name: "Rohit Mehta",
     role: "Weekend Traveler",
     content: "The farm-to-table breakfast alone is worth the trip. You can tell every ingredient was picked just meters from your table.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    image: "https://i.pravatar.cc/150?img=56",
   },
   {
-    name: "Elena Rodriguez",
+    name: "Ayush Iyer",
     role: "Yoga Instructor",
     content:
       "A truly spiritual experience. The private decks are perfectly positioned for sunrise meditation. My soul felt recharged after just two days.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+    image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=400",
   },
 ];
 
