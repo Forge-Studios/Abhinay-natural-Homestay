@@ -1,5 +1,5 @@
 "use client";
-import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
 // Custom Fern Frond SVG component for reuse
@@ -9,6 +9,7 @@ const FernFrond = ({ className }: { className?: string }) => (
     <path d="M42 90C42 90 35 75 25 65C15 55 5 50 5 50C5 50 15 58 28 68C41 78 40 92 40 92" />
   </svg>
 );
+const phoneNumber = process.env.NEXT_PUBLIC_MOBILE_NUM;
 
 export default function Footer() {
   return (
@@ -37,7 +38,7 @@ export default function Footer() {
             ABHINAY
           </h3>
           <p className="text-brand-primary/60 max-w-sm leading-relaxed text-sm font-light italic">
-            "A homestay designed for deep rest and natural connection. Reconnect with the wild in comfort."
+            &ldquo;A homestay designed for deep rest and natural connection. Reconnect with the wild in comfort.&rdquo;
           </p>
         </div>
 
@@ -46,13 +47,14 @@ export default function Footer() {
           <h4 className="text-[11px] font-bold tracking-[0.4em] uppercase text-brand-accent/80">Connect</h4>
           <div className="flex gap-4">
             {[
-              { Icon: Instagram, href: "#", label: "Instagram" },
-              { Icon: Facebook, href: "#", label: "Facebook" },
-              { Icon: Twitter, href: "#", label: "Twitter" },
+              { Icon: Instagram, href: "https://www.instagram.com/sujatachhetri16?igsh=ejhpcHZnbTV0ZnV3", label: "Instagram" },
+              { Icon: Facebook, href: "https://www.facebook.com/share/1DVGW2zQha/", label: "Facebook" },
             ].map(({ Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
+                target="_blank" // Opens link in a new tab
+                rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-brand-primary hover:text-white border border-brand-primary/5 transition-all duration-300 shadow-sm"
                 aria-label={label}
               >
@@ -72,7 +74,7 @@ export default function Footer() {
             </a>
             <a href="tel:+919876543210" className="flex items-center gap-3 hover:text-brand-accent transition-all">
               <Phone size={16} className="text-brand-accent/60" />
-              <span>+91 98765 43210</span>
+              <span>{phoneNumber}</span>
             </a>
             <div className="flex items-start gap-3">
               <MapPin size={16} className="mt-1 text-brand-accent/60" />
@@ -89,7 +91,7 @@ export default function Footer() {
         <div className="space-y-5">
           <h4 className="text-[11px] font-bold tracking-[0.4em] uppercase text-brand-accent/80">Explore</h4>
           <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-            {["Home", "Rooms", "Experiences", "Gallery", "Contact", "Booking"].map((label) => (
+            {["About", "Rooms", "Gallery", "Contact"].map((label) => (
               <Link
                 key={label}
                 href={`/${label.toLowerCase()}`}
