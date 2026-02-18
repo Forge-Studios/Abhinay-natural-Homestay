@@ -5,25 +5,36 @@ import Section from "@/components/base/Section";
 import ImageBgCard from "@/components/ImageBgCard";
 import TwoColSection from "@/components/TwoColSection";
 import { SITE_IMAGES } from "@/lib/images";
-import { Bed, Square, Star, Users, Wind } from "lucide-react";
+import { Bed, Square, Star, Users, Utensils } from "lucide-react";
 import { Attractions } from "./attractions";
 import FooterCtaSection from "./footerCTA";
 
 const rooms = [
   {
     id: 1,
-    title: "Deluxe (Double Bedroom)",
+    title: "Standard Room (Double Bedroom)",
+    description: "Comfortable and cozy room with a queen size bed, perfect for couples or solo travelers.",
+    price: "2,000",
+    size: "Standard",
+    guests: "2 Adults",
+    bed: "Queen Size Bed",
+    images: [SITE_IMAGES.Standard1, SITE_IMAGES.Standard2],
+    tag: "Standard Comfort",
+  },
+  {
+    id: 2,
+    title: "Deluxe(Double Bedroom)",
     description: "Our standard rooms for two. Choose between the Deluxe room with a Queen bed or our standalone King Bed Cottage for more privacy.",
-    price: "2,000 - 2,500",
+    price: "2500",
     size: "Cosy & Private",
     guests: "2 Adults",
-    bed: "Queen or King Bed",
+    bed: "King Size bed ",
     images: [SITE_IMAGES.roomSingle, SITE_IMAGES.outside2],
     tag: "6 Rooms Total",
     packageInfo: "Stay + Meals: ₹1600 per person",
   },
   {
-    id: 2,
+    id: 3,
     title: "Deluxe Family (4-Bedded Room)",
     description: "A spacious setup for small families or friends traveling together. Includes two comfortable Queen size beds.",
     price: "3,000",
@@ -34,7 +45,7 @@ const rooms = [
     tag: "4 Rooms Available",
   },
   {
-    id: 3,
+    id: 4,
     title: "Super Family (5-Bedded Room)",
     description: "Great for larger groups. These rooms are equipped with 1 King and 1 Queen sized beds to fit everyone comfortably.",
     price: "3,500",
@@ -45,19 +56,19 @@ const rooms = [
     tag: "4 Rooms Available",
   },
   {
-    id: 4,
+    id: 5,
     title: "Dormitory Hall",
     description: "A large shared hall featuring five double beds. The best choice for trekking groups and big squads on a budget.",
-    price: "5,000",
+    price: "4,000",
     size: "Shared Space",
     guests: "10 people",
     bed: "5 Double Beds",
-    images: [SITE_IMAGES.image1],
+    images: [SITE_IMAGES.Dormitory1, SITE_IMAGES.Dormitory2],
     tag: "1 Dorm Available",
   },
 ];
 
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_MOBILE_NUM; 
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_MOBILE_NUM;
 
 export default function RoomsPage() {
   const handleRoomDetails = (roomType: string) => {
@@ -181,8 +192,8 @@ export default function RoomsPage() {
                         <span className="text-sm font-medium">{room.bed}</span>
                       </div>
                       <div className="flex items-center gap-3 text-brand-primary/80">
-                        <Wind size={18} className="text-brand-accent" />
-                        <span className="text-sm font-medium">Climate Control</span>
+                        <Utensils size={18} className="text-brand-accent" />
+                        <span className="text-sm font-medium">Package incl. food- 1600/person</span>
                       </div>
                     </div>
 
