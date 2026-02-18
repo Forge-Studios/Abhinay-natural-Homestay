@@ -5,7 +5,7 @@ import Section from "@/components/base/Section";
 import ImageBgCard from "@/components/ImageBgCard";
 import TwoColSection from "@/components/TwoColSection";
 import { SITE_IMAGES } from "@/lib/images";
-import { Bed, Square, Star, Users, Wind } from "lucide-react";
+import { Bed, Square, Star, Users, Utensils } from "lucide-react";
 import { Attractions } from "./attractions";
 import FooterCtaSection from "./footerCTA";
 
@@ -18,7 +18,7 @@ const rooms = [
     size: "Standard",
     guests: "2 Adults",
     bed: "Queen Size Bed",
-    images: [SITE_IMAGES.roomSingle, SITE_IMAGES.outside2],
+    images: [SITE_IMAGES.Standard1, SITE_IMAGES.Standard2],
     tag: "Standard Comfort",
   },
   {
@@ -63,7 +63,7 @@ const rooms = [
     size: "Shared Space",
     guests: "10 people",
     bed: "5 Double Beds",
-    images: [SITE_IMAGES.image1],
+    images: [SITE_IMAGES.Dormitory1, SITE_IMAGES.Dormitory2],
     tag: "1 Dorm Available",
   },
 ];
@@ -192,7 +192,7 @@ export default function RoomsPage() {
                         <span className="text-sm font-medium">{room.bed}</span>
                       </div>
                       <div className="flex items-center gap-3 text-brand-primary/80">
-                        <Wind size={18} className="text-brand-accent" />
+                        <Utensils size={18} className="text-brand-accent" />
                         <span className="text-sm font-medium">Package incl. food- 1600/person</span>
                       </div>
                     </div>
