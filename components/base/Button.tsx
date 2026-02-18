@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { ElementType } from "react";
 
 type BaseButtonProps = {
@@ -69,7 +70,7 @@ export default function Button({
     100: "border-brand-accent",
   };
 
-  const Component = (type === "link" ? "a" : "button") as ElementType;
+  const Component = (type === "link" ? Link : "button") as ElementType;
 
   return (
     <Component

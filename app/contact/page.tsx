@@ -1,7 +1,7 @@
 "use client";
 
 import Form from "@/components/base/Form";
-import Toast from "@/components/base/Toast"; 
+import Toast from "@/components/base/Toast";
 import { ChevronDown, Mail, MapPin, Phone } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -13,6 +13,7 @@ export default function ContactPage() {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const options = ["General Inquiry", "Single Booking", "Group Booking", "Others"];
+  const PhoneNumber = process.env.NEXT_PUBLIC_MOBILE_NUM;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -86,7 +87,7 @@ export default function ContactPage() {
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
           {[
             { icon: <MapPin size={18} />, title: "Location", value: "Phaparkheti, WB", color: "bg-brand-primary" },
-            { icon: <Phone size={18} />, title: "Call", value: "+91 98765 43210", color: "bg-brand-muted" },
+            { icon: <Phone size={18} />, title: "Call", value: PhoneNumber, color: "bg-brand-muted" },
             { icon: <Mail size={18} />, title: "Email", value: "hello@abhinaynatural.com", color: "bg-brand-accent" },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-4 bg-white/40 backdrop-blur-md p-5 rounded-2xl border border-white/20">
@@ -171,7 +172,6 @@ export default function ContactPage() {
                 style={{ border: 0 }}
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4372.777635032914!2d88.69382506526053!3d27.038082229801788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4059f516c776f%3A0x4c5e6cf574bc413b!2sAbhinay%20Natural%20Homestay!5e1!3m2!1sen!2sin!4v1771170887303!5m2!1sen!2sin"
               />
-
             </div>
           </aside>
         </section>

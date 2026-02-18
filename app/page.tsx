@@ -4,6 +4,7 @@ import IconTextCard from "@/components/IconTextCard";
 import BaseCard from "@/components/base/BaseCard";
 import { SITE_IMAGES } from "@/lib/images";
 import Image from "next/image";
+import Link from "next/link";
 import BookingBar from "../components/BookingBar";
 
 const testimonials = [
@@ -126,12 +127,18 @@ export default function HomePage() {
                 Every stone and tree tells a story of harmony. Unplug from the digital world and reconnect with nature.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-4 bg-brand-accent text-white rounded-2xl font-bold tracking-widest shadow-lg hover:brightness-110">
-                  Explore Cottages
-                </button>
-                <button className="px-8 py-4 border-2 border-brand-primary text-brand-primary rounded-2xl font-bold tracking-widest hover:bg-brand-primary hover:text-white">
-                  View Experiences
-                </button>
+                <Link
+                  className="px-8 py-4 bg-brand-accent text-white rounded-2xl font-bold tracking-widest shadow-lg hover:brightness-110"
+                  href="/rooms"
+                >
+                  Explore Rooms
+                </Link>
+                <Link
+                  href="/gallery"
+                  className="px-8 py-4 border-2 border-brand-primary text-brand-primary rounded-2xl font-bold tracking-widest hover:bg-brand-primary hover:text-white"
+                >
+                  View Gallery
+                </Link>
               </div>
             </div>
           </div>

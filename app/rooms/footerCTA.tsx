@@ -2,12 +2,13 @@
 
 import Button from "@/components/base/Button";
 import ImageBgCard from "@/components/ImageBgCard";
+import { SITE_IMAGES } from "@/lib/images";
 
 export default function FooterCtaSection() {
   return (
     <section className="px-4 lg:px-0">
       <ImageBgCard
-        images={["https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800&q=80"]}
+        images={[SITE_IMAGES.FooterCTA]}
         className="
           h-[420px] md:h-[520px] lg:h-[620px]
           rounded-3xl
@@ -35,7 +36,7 @@ export default function FooterCtaSection() {
           <div className="mt-10 flex justify-center">
             <Button
               type="link"
-              href="#"
+              href="/contact"
               text="Book Now"
               size="lg"
               intensity="sm"
