@@ -79,7 +79,7 @@ export default function Footer() {
             <div className="flex items-start gap-3">
               <MapPin size={16} className="mt-1 text-brand-accent/60" />
               <span className="leading-tight">
-                N 88°41, 27°02, 16.8, 41 Phaparkheti,
+                N 88°41, 27°02, 16.8, 41 Paparkheti,
                 <br />
                 Gorubathan, West Bengal 735231
               </span>

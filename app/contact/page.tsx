@@ -86,7 +86,7 @@ export default function ContactPage() {
         {/* QUICK CONTACT ACTIONS */}
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
           {[
-            { icon: <MapPin size={18} />, title: "Location", value: "Phaparkheti, WB", color: "bg-brand-primary" },
+            { icon: <MapPin size={18} />, title: "Location", value: "Paparkheti, WB", color: "bg-brand-primary" },
             { icon: <Phone size={18} />, title: "Call", value: PhoneNumber, color: "bg-brand-muted" },
             { icon: <Mail size={18} />, title: "Email", value: "hello@abhinaynaturalhomestay.in", color: "bg-brand-accent" },
           ].map((item, i) => (

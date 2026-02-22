@@ -21,7 +21,7 @@ export default function AboutPage() {
       id: "2",
       src: SITE_IMAGES.outside3,
       alt: "Hill View from Gorubathan",
-      title: "Mornings in Phaparkheti",
+      title: "Mornings in Paparkheti",
       description: "Where the only alarm clock is the sun rising over the valley.",
     },
   ];
@@ -31,7 +31,7 @@ export default function AboutPage() {
       number: "Nourish",
       title: "The Taste of Home",
       description:
-        "Food that remembers its roots. Seasonal greens from our garden, spices ground by hand, and recipes passed down through generations.",
+        "Food that remembers its roots. Fresh, seasonal ingredients, thoughtfully prepared, and recipes inspired by generations of tradition.",
     },
     {
       number: "Breathe",
@@ -68,7 +68,7 @@ export default function AboutPage() {
       title: "The Secret Waterfalls",
       location: "Hidden Trails",
       description:
-        "Forget the tourist spots. Ask us to guide you to the hidden cascades tucked away in the Phaparkheti forests. Pure, untouched, and strictly for those who seek silence.",
+        "Forget the tourist spots. Ask us to guide you to the hidden cascades tucked away in the Paparkheti forests. Pure, untouched, and strictly for those who seek silence.",
     },
   ];
 
@@ -87,7 +87,7 @@ export default function AboutPage() {
             <div className="lg:col-span-5 space-y-8">
               <p className="text-lg md:text-xl leading-relaxed text-[#3F4C1B]/90">
                 Life in the city is loud. <strong>Abhinay Natural Homestay</strong> is the antidote. Tucked away in the misty embrace of{" "}
-                <strong>Phaparkheti, Gorubathan</strong>, we offer you something rare: a chance to stop, breathe, and feel at home in the Himalayas.
+                <strong>Paparkheti, Gorubathan</strong>, we offer you something rare: a chance to stop, breathe, and feel at home in the Himalayas.
               </p>
               <Button type="link" text="Find Your Peace" href="/contact" size="lg" rounded="3xl" intensity="lg" hasArrow />
             </div>
@@ -100,9 +100,9 @@ export default function AboutPage() {
             <header className="max-w-2xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#3F4C1B]">More Than Just a Stay.</h2>
               <p className="text-base leading-relaxed opacity-80 text-[#3F4C1B]">
-                We didn't build a hotel; we opened our home. <strong>Tucked away in the quiet folds of Phaparkheti</strong>, Abhinay is built with
-                local stones, bamboo, and a lot of heart. We believe that true luxury isn't found in a marble lobby, but in a cup of tea made with
-                fresh milk, served with a smile that says, "We are glad you are here."
+                We didn't build a hotel; we opened our home. <strong>Tucked away in the quiet folds of Paparkheti</strong>, Abhinay is built with
+                care and a lot of heart. We believe that true luxury isn’t found in a marble lobby, but in a warm cup of tea
+                served with a smile that says, “We are glad you are here.”
               </p>
             </header>
             <ImageCarousel images={resortImages} autoPlay autoPlayInterval={8000} />
@@ -197,19 +197,19 @@ export default function AboutPage() {
                   id: "location",
                   title: "Where exactly is 'Peace' located?",
                   content:
-                    "We are in the village of Phaparkheti, Gorubathan. It is an easy drive from the plains, but far enough to leave the noise behind.",
+                    "We are in the village of Paparkheti, Gorubathan. It is an easy drive from the plains, but far enough to leave the noise behind.",
                 },
                 {
                   id: "food",
                   title: "What is on the menu?",
                   content:
-                    "Comfort. We serve traditional Bengali and Pahari meals using organic vegetables from our own backyard. If you have a favorite childhood dish, let us know—we love to cook with heart.",
+                    "Comfort. We serve traditional Bengali and Pahari meals made with fresh vegetables sourced from the local market. Explore a selection of comforting, homestyle dishes thoughtfully prepared and ready for you to enjoy from our menu.",
                 },
                 {
                   id: "vibe",
                   title: "Is this place right for me?",
                   content:
-                    "If you are looking for loud parties and room service, perhaps not. But if you are looking for fireflies, homemade butter, and the sound of silence, then yes—you are coming home.",
+                    "If you are looking for loud parties and room service, perhaps not. But if you are looking for fireflies, homemade pickles, and the sound of silence, then yes—you are coming home.",
                 },
               ]}
             />
