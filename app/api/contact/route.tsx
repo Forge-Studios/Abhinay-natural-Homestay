@@ -19,13 +19,13 @@ export async function POST(req: Request) {
 
     // --- 1. EMAIL TO THE OWNER (The Homestay Owner) ---
     await transporter.sendMail({
-      from: `"Website Contact System" <${process.env.EMAIL_USER}>`,
+      from: `"Abhinay Natural Homestay" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
       replyTo: email,
       subject: `📩 New Message: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #eee;">
-          <h2 style="color: #2D3E40;">New Website Inquiry</h2>
+          <h2 style="color: #2D3E40;">New Booking enquiry</h2>
           <p><strong>From:</strong> ${name} (${email})</p>
           <p><strong>Subject:</strong> ${subject}</p>
           <div style="background: #f4f4f4; padding: 15px; border-radius: 5px;">${message}</div>

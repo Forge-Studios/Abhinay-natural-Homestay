@@ -29,7 +29,7 @@ const rooms = [
     size: "Cosy & Private",
     guests: "2 Adults",
     bed: "King Size bed ",
-    images: [SITE_IMAGES.roomSingle, SITE_IMAGES.outside2],
+    images: [SITE_IMAGES.image1, SITE_IMAGES.roomSingle, SITE_IMAGES.outside2],
     tag: "6 Rooms Total",
     packageInfo: "Stay + Meals: ₹1600 per person",
   },
@@ -41,7 +41,7 @@ const rooms = [
     size: "Large",
     guests: "4 People",
     bed: "2 Queen sized beds",
-    images: [SITE_IMAGES.outside, SITE_IMAGES.outside2],
+    images: [SITE_IMAGES.outside2, SITE_IMAGES.InteriorBedded4],
     tag: "4 Rooms Available",
   },
   {
@@ -52,7 +52,7 @@ const rooms = [
     size: "Extra Large",
     guests: "5 People",
     bed: "1 King size and 1 Queen size Bed",
-    images: [SITE_IMAGES.roomDeluxe, SITE_IMAGES.outside3],
+    images: [SITE_IMAGES.outside3, SITE_IMAGES.roomDeluxe],
     tag: "4 Rooms Available",
   },
   {
@@ -150,23 +150,24 @@ export default function RoomsPage() {
                 bgColor="transparent"
                 id={`room-${room.id}`}
                 left={
-                  <div className="w-full h-full">
+                  /* FIX: Wrapper with forced height prevents layout jumps */
+                  <div className="relative w-full h-[400px] lg:h-[600px] overflow-hidden">
                     <ImageBgCard
+                      key={`room-gallery-${room.id}`} // Prevents state reuse between different cards
                       images={room.images}
                       className={`
-                        w-full h-100 lg:h-150
-                        shadow-xl overflow-hidden
-                        ${
-                          index % 2 !== 0
-                            ? "lg:rounded-tr-[3rem] lg:rounded-br-[3rem] lg:rounded-tl-none lg:rounded-bl-none"
-                            : "lg:rounded-tl-[3rem] lg:rounded-bl-[3rem] lg:rounded-tr-none lg:rounded-br-none"
-                        }
-                        group
-                      `}
+        w-full h-full object-cover
+        ${
+          index % 2 !== 0
+            ? "lg:rounded-tr-[3rem] lg:rounded-br-[3rem] lg:rounded-tl-none lg:rounded-bl-none"
+            : "lg:rounded-tl-[3rem] lg:rounded-bl-[3rem] lg:rounded-tr-none lg:rounded-br-none"
+        }
+        group
+      `}
                       overlay={false}
                     >
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-700" />
-                      <div className="absolute top-8 left-8 bg-white/80 backdrop-blur-md px-6 py-2 rounded-full border border-white/30">
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-700 z-10" />
+                      <div className="absolute top-8 left-8 z-20 bg-white/80 backdrop-blur-md px-6 py-2 rounded-full border border-white/30">
                         <span className="text-[10px] font-bold tracking-widest text-brand-primary uppercase">{room.tag}</span>
                       </div>
                     </ImageBgCard>

@@ -17,6 +17,7 @@ export const SITE_IMAGES = {
   Dormitory1: `${BLOB_BASE}/dorm1.jpeg`,
   Dormitory2: `${BLOB_BASE}/dorm2.jpeg`,
   FooterCTA: `${BLOB_BASE}/FooterCTA.jpeg`,
+  InteriorBedded4: `${BLOB_BASE}/4bedroom.jpeg`,
 
   //  MENU IMAGES ---
   menu1: `${BLOB_BASE}/menu1.jpeg`,

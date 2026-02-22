@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ReactNode, useState } from "react";
 
 interface ImageBgCardProps {
@@ -55,26 +56,36 @@ export default function ImageBgCard({
         relative overflow-hidden rounded-3xl
         ${className}
       `}
-      style={{
-        backgroundImage: `url(${images[index]})`,
-        backgroundPosition: position,
-        backgroundSize: size,
-        backgroundRepeat: repeat,
-        transition: "background-image 0.6s ease-in-out",
-      }}
     >
-      {/* Overlay */}
-      {overlay && <div className={`absolute inset-0 ${overlayClassName}`} />}
+      {/* 1. FLICKER FIX - Layers instead of backgroundImage swap */}
+      {images.map((img, i) => (
+        <div key={img} className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${i === index ? "opacity-100 z-0" : "opacity-0"}`}>
+          <Image
+            src={img}
+            alt=""
+            fill
+            priority={i === 0}
+            className="object-cover"
+            style={{ objectPosition: position }}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        </div>
+      ))}
 
-      {/* Content */}
-      <div className="relative z-10 h-full w-full">{children}</div>
+      {/* Overlay - Keeps your original class */}
+      {overlay && <div className={`absolute inset-0 z-10 pointer-events-none ${overlayClassName}`} />}
 
-      {/* Arrows */}
+      {/* Content - Keeps your original z-10 logic */}
+      <div className="relative z-20 h-full w-full pointer-events-none">
+        <div className="pointer-events-auto h-full w-full">{children}</div>
+      </div>
+
+      {/* Arrows - Exactly as they were in your code */}
       {showArrows && total > 1 && (
         <>
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-30
                        h-10 w-10 rounded-full bg-white/20 backdrop-blur
                        text-white hover:bg-white/30 transition"
           >
@@ -83,7 +94,7 @@ export default function ImageBgCard({
 
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-30
                        h-10 w-10 rounded-full bg-white/20 backdrop-blur
                        text-white hover:bg-white/30 transition"
           >
@@ -92,9 +103,9 @@ export default function ImageBgCard({
         </>
       )}
 
-      {/* Dots */}
+      {/* Dots - Exactly as they were in your code */}
       {showDots && total > 1 && (
-        <div className="absolute top-6 right-6 z-20 flex gap-2">
+        <div className="absolute top-6 right-6 z-30 flex gap-2">
           {images.map((_, i) => (
             <button
               key={i}
