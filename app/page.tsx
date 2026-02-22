@@ -74,7 +74,7 @@ export default function HomePage() {
         <div className="max-w-[1400px] mx-auto px-6">
           <header className="text-center mb-16">
             <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-sm">Why Choose Us</span>
-            <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-primary">Unmatched Forest Luxury</h2>
+            <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-primary">Your Offbeat Nature Escape</h2>
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
@@ -121,7 +121,7 @@ export default function HomePage() {
               <Image src={SITE_IMAGES.outside2} alt="Forest Sanctuary" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
             </div>
             <div className="space-y-8 order-1 lg:order-2">
-              <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-sm">Since 2020</span>
+              <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-sm">Since 2011</span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-primary leading-tight">A Sanctuary for the Soul</h2>
               <p className="text-brand-secondary text-lg md:text-xl font-light leading-loose max-w-xl">
                 Every stone and tree tells a story of harmony. Unplug from the digital world and reconnect with nature.
