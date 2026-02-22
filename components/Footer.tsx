@@ -70,7 +70,7 @@ export default function Footer() {
           <div className="space-y-4 text-sm font-light">
             <a href="mailto:hello@abhinaynatural.com" className="flex items-center gap-3 hover:text-brand-accent transition-all group">
               <Mail size={16} className="text-brand-accent/60" />
-              <span>hello@abhinaynatural.com</span>
+              <span>hello@abhinaynaturalhomestay.in</span>
             </a>
             <a href="tel:+919876543210" className="flex items-center gap-3 hover:text-brand-accent transition-all">
               <Phone size={16} className="text-brand-accent/60" />
@@ -107,14 +107,11 @@ export default function Footer() {
       {/* --- BOTTOM BAR --- */}
       <div className="w-full max-w-[1400px] mx-auto mt-20 pt-8 border-t border-brand-primary/10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-brand-primary/40 tracking-[0.2em] uppercase font-bold">
-          <p>© 2026 Abhinay Natural Homestay. Deeply Rooted.</p>
+          <p>© {new Date().getFullYear()} Abhinay Natural Homestay.</p>
           <div className="flex gap-8">
-            <Link href="/privacy" className="hover:text-brand-accent transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-brand-accent transition-colors">
-              Terms of Stay
-            </Link>
+            <p className="hover:text-brand-accent transition-colors">
+              All Rights Reserved.
+            </p>
           </div>
         </div>
       </div>

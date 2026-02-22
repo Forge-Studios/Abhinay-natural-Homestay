@@ -44,7 +44,7 @@ export async function POST(req: Request) {
           <h1 style="color: #2D3E40; font-size: 24px;">We've received your message</h1>
           <p style="color: #555; font-size: 16px; line-height: 1.6;">
             Hello ${name},<br><br>
-            Thank you for contacting <strong>Natural Retreat</strong>. We've received your inquiry regarding <em>"${subject}"</em> and our team is currently reviewing it.
+            Thank you for contacting <strong>Abhinay Natural Homestay</strong>. We've received your inquiry regarding <em>"${subject}"</em> and our team is currently reviewing it.
           </p>
           <div style="margin: 30px 0; padding: 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
             <p style="font-style: italic; color: #777; margin: 0;">"In every walk with nature, one receives far more than he seeks."</p>

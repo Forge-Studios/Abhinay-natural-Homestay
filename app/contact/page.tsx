@@ -88,7 +88,7 @@ export default function ContactPage() {
           {[
             { icon: <MapPin size={18} />, title: "Location", value: "Phaparkheti, WB", color: "bg-brand-primary" },
             { icon: <Phone size={18} />, title: "Call", value: PhoneNumber, color: "bg-brand-muted" },
-            { icon: <Mail size={18} />, title: "Email", value: "hello@abhinaynatural.in", color: "bg-brand-accent" },
+            { icon: <Mail size={18} />, title: "Email", value: "hello@abhinaynaturalhomestay.in", color: "bg-brand-accent" },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-4 bg-white/40 backdrop-blur-md p-5 rounded-2xl border border-white/20">
               <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center text-white`}>{item.icon}</div>
