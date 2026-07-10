@@ -18,7 +18,7 @@ const rooms = [
     size: "Standard",
     guests: "2 Adults",
     bed: "Queen Size Bed",
-    images: [SITE_IMAGES.Standard1, SITE_IMAGES.Standard2],
+    images: [SITE_IMAGES.Standard1, SITE_IMAGES.Standard2, SITE_IMAGES.Standard3],
     tag: "Standard Comfort",
   },
   {
@@ -29,7 +29,7 @@ const rooms = [
     size: "Cosy & Private",
     guests: "2 Adults",
     bed: "King Size bed ",
-    images: [SITE_IMAGES.image1, SITE_IMAGES.roomSingle, SITE_IMAGES.outside2],
+    images: [SITE_IMAGES.image1, SITE_IMAGES.doubleBed1, SITE_IMAGES.doubleBed2, SITE_IMAGES.doubleBed3],
     tag: "6 Rooms Total",
     packageInfo: "Stay + Meals: ₹1600 per person",
   },
@@ -41,7 +41,7 @@ const rooms = [
     size: "Large",
     guests: "4 People",
     bed: "2 Queen sized beds",
-    images: [SITE_IMAGES.outside2, SITE_IMAGES.InteriorBedded4],
+    images: [SITE_IMAGES.outside2, SITE_IMAGES.fourBed1, SITE_IMAGES.fourBed2, SITE_IMAGES.fourBed3],
     tag: "4 Rooms Available",
   },
   {
@@ -52,7 +52,7 @@ const rooms = [
     size: "Extra Large",
     guests: "5 People",
     bed: "1 King size and 1 Queen size Bed",
-    images: [SITE_IMAGES.outside3, SITE_IMAGES.roomDeluxe],
+    images: [SITE_IMAGES.outside3, SITE_IMAGES.fiveBed2, SITE_IMAGES.roomDeluxe],
     tag: "4 Rooms Available",
   },
   {
@@ -63,7 +63,7 @@ const rooms = [
     size: "Shared Space",
     guests: "10 people",
     bed: "5 Double Beds",
-    images: [SITE_IMAGES.Dormitory1, SITE_IMAGES.Dormitory2],
+    images: [SITE_IMAGES.Dormitory1, SITE_IMAGES.Dormitory2, SITE_IMAGES.Dormitory4],
     tag: "1 Dorm Available",
   },
 ];

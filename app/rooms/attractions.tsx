@@ -4,6 +4,7 @@ import Section from "@/components/base/Section";
 import ImageBgCard from "@/components/ImageBgCard";
 import ImageCard from "@/components/ImageCard";
 import TwoColSection from "@/components/TwoColSection";
+import { SITE_IMAGES } from "@/lib/images";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -11,7 +12,7 @@ const attractions = [
   {
     title: "Dine by Design",
     description: "From a candlelit dinner on a cliffside pavilion to a starlit beach picnic surrounded by torches, our “Dine by Design” experience.",
-    imgSrc: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+    imgSrc: SITE_IMAGES.attractionFood,
   },
   {
     title: "Local Living Encounters",
@@ -22,7 +23,7 @@ const attractions = [
   {
     title: "Sunrise Awakening Rituals",
     description: "Begin your morning with guided yoga on a cliff overlooking the sea, followed by a nourishing herbal elixir.",
-    imgSrc: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2",
+    imgSrc: SITE_IMAGES.doubleBed3,
   },
 ];
 

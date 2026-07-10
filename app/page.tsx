@@ -118,7 +118,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-[1400px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl order-2 lg:order-1">
-              <Image src={SITE_IMAGES.outside2} alt="Forest Sanctuary" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+              <Image src={SITE_IMAGES.gallery10} alt="Forest Sanctuary" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
             </div>
             <div className="space-y-8 order-1 lg:order-2">
               <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-sm">Since 2011</span>
@@ -157,7 +157,7 @@ export default function HomePage() {
               <span className="text-3xl font-bold text-brand-primary">4.7</span>
               <div className="flex flex-col leading-tight">
                 <div className="flex text-[#FBBC05] text-xs">★★★★★</div>
-                <span className="text-[10px] uppercase tracking-widest font-bold opacity-60">275 Google Reviews</span>
+                <span className="text-[10px] uppercase tracking-widest font-bold opacity-60">292 Google Reviews</span>
               </div>
             </div>
           </header>
