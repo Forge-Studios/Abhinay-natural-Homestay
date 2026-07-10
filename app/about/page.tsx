@@ -12,14 +12,14 @@ export default function AboutPage() {
   const resortImages = [
     {
       id: "1",
-      src: SITE_IMAGES.outside,
+      src: SITE_IMAGES.outside2,
       alt: "Abhinay Natural Homestay Exterior",
       title: "The Road Ends Here",
       description: "And the peace begins. Wood, earth, and the luxury of silence.",
     },
     {
       id: "2",
-      src: SITE_IMAGES.outside3,
+      src: SITE_IMAGES.Dormitory1,
       alt: "Hill View from Gorubathan",
       title: "Mornings in Paparkheti",
       description: "Where the only alarm clock is the sun rising over the valley.",
@@ -100,9 +100,9 @@ export default function AboutPage() {
             <header className="max-w-2xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#3F4C1B]">More Than Just a Stay.</h2>
               <p className="text-base leading-relaxed opacity-80 text-[#3F4C1B]">
-                We didn't build a hotel; we opened our home. <strong>Tucked away in the quiet folds of Paparkheti</strong>, Abhinay is built with
-                care and a lot of heart. We believe that true luxury isn’t found in a marble lobby, but in a warm cup of tea
-                served with a smile that says, “We are glad you are here.”
+                We didn't build a hotel; we opened our home. <strong>Tucked away in the quiet folds of Paparkheti</strong>, Abhinay is built with care
+                and a lot of heart. We believe that true luxury isn’t found in a marble lobby, but in a warm cup of tea served with a smile that says,
+                “We are glad you are here.”
               </p>
             </header>
             <ImageCarousel images={resortImages} autoPlay autoPlayInterval={8000} />
@@ -128,7 +128,7 @@ export default function AboutPage() {
           <div className="xl:col-span-5 xl:sticky xl:top-32 space-y-10 order-1 xl:order-2">
             <div className="aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl relative group">
               <Image
-                src={SITE_IMAGES.outside2}
+                src={SITE_IMAGES.gallery11}
                 alt="The misty hills of Gorubathan from Abhinay Homestay"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"

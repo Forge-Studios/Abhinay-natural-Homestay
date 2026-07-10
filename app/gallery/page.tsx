@@ -11,7 +11,11 @@ const resortImages = [
   { id: 5, src: SITE_IMAGES.image2, alt: "Natural Textures", height: "h-[28rem]" },
   { id: 6, src: SITE_IMAGES.roomSingle, alt: "Cozy Single Room", height: "h-60" },
   { id: 7, src: SITE_IMAGES.outside3, alt: "Morning Mist Walkway", height: "h-96" },
-  { id: 8, src: SITE_IMAGES.image1, alt: "Morning Yoga Session", height: "h-80" },
+  { id: 8, src: SITE_IMAGES.Dormitory1, alt: "Dormitory Exterior", height: "h-80" },
+  { id: 9, src: SITE_IMAGES.doubleBed1, alt: "Double bed room Interiro", height: "h-80" },
+  { id: 10, src: SITE_IMAGES.gallery10, alt: "Slow morning at the homestay", height: "h-72" },
+  { id: 11, src: SITE_IMAGES.gallery11, alt: "Peaceful Moment with Darjeeling tea", height: "h-105" },
+  { id: 12, src: SITE_IMAGES.gallery12, alt: "cozy corner", height: "h-72" },
 ];
 
 // Randomly generated placements for a dense forest look
